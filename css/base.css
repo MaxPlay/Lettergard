@@ -25,6 +25,49 @@ header .content {
 	border-right:1px solid #999999;
 }
 
+header .content .title {
+	color:white;
+	font-family:"Lucida Console";
+	font-size:24px;
+	top:10px;
+	margin:10px;
+	float:left;
+}
+
+header .content .menu {
+	float:left;
+	height:40px;
+	width:40px;
+}
+
+header .content .searcharea {
+	margin:5px;
+	float:left;
+}
+
+header .content .searchbar {
+	color:#666666;
+	border-radius:10px;
+	border:0px;
+	height:20px;
+	width:200px;
+	padding:0px 10px;
+	position:relative;
+	z-index:2;
+}
+
+header .content .searchbutton {
+	background:#dddddd;
+	border-radius:10px;
+	top:6px;
+	left:-20px;
+	border:0px;
+	height:20px;
+	width:50px;
+	padding-left:22px;
+	position:relative;
+}
+
 #wrapper {
 	margin:0 auto;
 	width:850px;

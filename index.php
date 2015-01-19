@@ -9,7 +9,15 @@
 	<body>
 		<header>
 			<div class="content">
-			
+				<div style="float:left;width:50px;">&nbsp;</div>
+				<span class="title">lettergard</span>
+				<div style="float:left;width:100px;">&nbsp;</div>
+				<form class="searcharea">
+					<input type="textbox" class="searchbar">
+					<button class="searchbutton"><img src="img/search.png"></button>
+				</form>
+				<div style="float:left;width:150px;">&nbsp;</div>
+				<div class="menu"><img src="img/menu.png"></div>
 			</div>
 		</header>
 		<div id="wrapper">
