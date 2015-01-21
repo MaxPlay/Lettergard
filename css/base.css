@@ -36,8 +36,90 @@ header .content .title {
 
 header .content .menu {
 	float:left;
-	height:40px;
-	width:40px;
+	height:60px;
+	width:100px;
+}
+
+header .content .menu .menuVolume {
+	position:relative;
+	top:-5;
+}
+
+header .content .menu .menuVolume .firstelement {
+	float:right;
+	clear:both;
+	padding:2px 8px;
+	height:10px;
+	width:150px;
+	background:#33cc33;
+	border-bottom:1px solid #009900;
+	opacity:0.8;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+}
+
+
+header .content .menu .menuVolume .menuelement:link {
+	float:right;
+	clear:both;
+	padding:2px 8px;
+	height:20px;
+	width:150px;
+	background:#33cc33;
+	border-bottom:1px solid #009900;
+	font-family:sans-serif;
+	color:#ffffff;
+	opacity:0.8;
+	transition:opacity 0.2s;
+	text-decoration:none;
+}
+
+header .content .menu .menuVolume .menuelement:active {
+	float:right;
+	clear:both;
+	padding:2px 8px;
+	height:20px;
+	width:150px;
+	background:#33cc33;
+	border-bottom:1px solid #009900;
+	font-family:sans-serif;
+	color:#ffffff;
+	opacity:0.8;
+	transition:opacity 0.2s;
+	text-decoration:none;
+}
+
+header .content .menu .menuVolume .menuelement:visited {
+	float:right;
+	clear:both;
+	padding:2px 8px;
+	height:20px;
+	width:150px;
+	background:#33cc33;
+	border-bottom:1px solid #009900;
+	font-family:sans-serif;
+	color:#ffffff;
+	opacity:0.8;
+	transition:opacity 0.2s, background 0.2s;
+	text-decoration:none;
+}
+
+header .content .menu .menuVolume .menuelement:hover {
+	opacity:1;
+	background:#66dd66;
+	text-decoration:underline;
+}
+
+header .content .menu .menuVolume .finalelement {
+	float:right;
+	clear:both;
+	padding:2px 8px;
+	height:15px;
+	width:150px;
+	background:#33cc33;
+	opacity:0.8;
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:10px;
 }
 
 header .content .searcharea {
@@ -54,6 +136,12 @@ header .content .searchbar {
 	padding:0px 10px;
 	position:relative;
 	z-index:2;
+	background:#eeeeee;
+	transition:background 0.2s;
+}
+
+header .content .searchbar:hover {
+	background:#ffffff;
 }
 
 header .content .searchbutton {
@@ -72,7 +160,7 @@ header .content .searchbutton {
 	margin:0 auto;
 	width:850px;
 	padding-top:60px;
-	height:calc(100% - 50px);
+	height:calc(100% - 70px);
 }
 
 nav {
@@ -146,8 +234,20 @@ nav footer a {
 	border-bottom-right-radius:10px;
 	width:100px;
 	height:25px;
-	color:white;
+	color:#ffffff;
 	font-size:16px;
+}
+
+.post_length {
+	position:relative;
+	top:-22px;
+	margin-left:110px;
+	width:100px;
+	height:25px;
+	color:#aaaaaa;
+	font-size:16px;
+	font-family:sans-serif;
+	text-align:right;
 }
 
 .timeline {
