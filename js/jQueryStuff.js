@@ -7,4 +7,12 @@ $(document).ready(function() {
 	$(".menu").mouseleave(function(){
 		$(".menuVolume").fadeOut("fast");
 	});
+	
+	
+	$(".login").mouseenter(function(){
+		$(".loginVolume").fadeIn("fast");
+	});
+	$(".login").mouseleave(function(){
+		$(".loginVolume").fadeOut("fast");
+	});
 });

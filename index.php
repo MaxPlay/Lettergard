@@ -1,9 +1,12 @@
-<!DOCTYPE html>
 <?php
+	/** Code is poetry **/
 	session_start();
 	include "connect.php";
+	
+	if(!isset($_SESSION['id']))
+		header('Location:front.php?login=0');
 ?>
-
+<!DOCTYPE html>
 <html>
 	<head>
 		<title></title>
@@ -24,14 +27,14 @@
 				</form>
 				<div style="float:left;width:100px;">&nbsp;</div>
 				<div class="menu"><img src="img/menu.png">
-					<div class="menuVolume" style="display:none;">
+					<form class="menuVolume" style="display:none;">
 						<div class="firstelement"></div>
 						<a class="menuelement" href="">Profil</a>
 						<a class="menuelement" href="">Einstellungen</a>
 						<a class="menuelement" href="">Hilfe</a>
 						<a class="menuelement" href="">Logout</a>
 						<div class="finalelement"></div>
-					</div>
+					</form>
 				</div>
 			</div>
 		</header>

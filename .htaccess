@@ -1,0 +1,8 @@
+RewriteEngine on
+
+RewriteRule ^\.htaccess$ - [F]
+RewriteBase /
+
+Options +FollowSymlinks
+
+RewriteRule ^(.*)/(.*)\.htm$ index.php?main=$1&sub=$2

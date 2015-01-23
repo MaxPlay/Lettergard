@@ -1,5 +1,7 @@
 html, body {
-	background: linear-gradient(#ffffff, #d0d0d0 200px);
+	background-repeat:repeat-x;
+	background-image:url("../img/bg.png");
+	background-color:#AAAAAA;
 	margin:0 auto;
 	width:850px;
 	height:100%;
