@@ -36,3 +36,29 @@ function getVisibleText(string) {
 	console.log(string);
 	return string;
 }
+
+function ValidateInput(string) {
+	var input = document.getElementById(string);
+	if (input.value.length > 0) {
+        input.style.borderColor = "#00aa00";
+		document.getElementById("submit").disabled = true;
+    }
+	else
+	{
+        input.style.borderColor = "#aa0000";
+		document.getElementById("submit").disabled = false;
+	}
+}
+
+function ValidatePW() {
+	var PW1 = document.getElementById("PW1");
+    var PW2 = document.getElementById("PW2");
+	if (PW1.value != PW2.value) {
+        document.getElementById("PW2").style.borderColor = "#aa0000";
+		document.getElementById("submit").disabled = true;
+    }
+	else {
+        document.getElementById("PW2").style.borderColor = "#00aa00";
+		document.getElementById("submit").disabled = false;
+	}
+}

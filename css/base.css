@@ -207,10 +207,24 @@ nav footer {
 	text-align:center;
 }
 
-nav footer a {
+nav footer a:link {
 	text-decoration:none;
 	color:#009900;
-	
+}
+
+nav footer a:visited {
+	text-decoration:none;
+	color:#009900;
+}
+
+nav footer a:active {
+	text-decoration:none;
+	color:#009900;
+}
+
+nav footer a:hover {
+	text-decoration:none;
+	color:#00AA00;
 }
 
 .post_text {

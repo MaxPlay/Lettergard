@@ -1,6 +1,12 @@
 <?php			
-					$verbindung = mysql_connect("localhost","root","pXTK8xFPyhfvK5EE")
-					or die("Verbindung zur Datenbank konnte nicht hergestellt werden.");
-		
-					mysql_select_db("lettergard") or die("Datenbank konnte nicht ausgewählt werden");
+if($_SERVER["HTTPS"] != "on")
+{
+    header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
+    exit();
+}
+
+$conn = new mysqli("localhost","root","pXTK8xFPyhfvK5EE", "lettergard");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
 ?>			

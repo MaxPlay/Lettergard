@@ -13,7 +13,7 @@
 	$db_check_user_output = mysql_query($db_check_user);
 	$db_check_user_output_query = mysql_fetch_object($db_check_user_output);
 	
-	if ($db_check_user_output_query->userPassword == validate_password(unpack($password)))
+	if ($db_check_user_output_query->userPassword == validate_password($password))
 		{
 			
 	$db_check_user = "SELECT * FROM user WHERE userName LIKE '$usermail' LIMIT 1";

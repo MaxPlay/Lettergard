@@ -103,11 +103,101 @@ header .login .loginVolume .finalelement {
 	margin-bottom:50px;
 }
 
+.registerarea {
+	position:relative;
+	margin-top:100px;
+	margin-left:400px;
+	background:#eeeeee;
+	padding:20px;
+	overflow:hidden;
+	border-radius:10px;
+}
+
+.registerarea .element {
+	float:right;
+	width:300px;
+	clear:both;
+	color:#666666;
+	border:0px;
+	padding:0px 10px;
+	margin:10px;
+	margin-left:50px;
+}
+
+.registerarea .element  input{
+	color:#666666;
+	border-radius:10px;
+	border:0px;
+	height:24px;
+	width:300px;
+	padding:0 10;
+	border:solid #dddddd;
+	border-bottom:1px;
+	border-top:1px;
+}
+
+.registerarea .element  input:hover{
+	color:#666666;
+	border-radius:10px;
+	border:0px;
+	height:24px;
+	width:300px;
+	padding:0 10;
+	border:solid #999999;
+	border-bottom:1px;
+	border-top:1px;
+}
+
+.registerarea .element  button{
+	padding:0 10;
+	background:#dddddd;
+	border-radius:10px;
+	border:0px;
+	height:30px;
+	color:#333333;
+	float:right;
+	border:solid #dddddd;
+	border-bottom:1px;
+	border-top:1px;
+	transition:background 0.2s;
+}
+
+.registerarea .element  button:hover{
+	background:#ffffff;
+	border:solid #999999;
+	border-bottom:1px;
+	border-top:1px;
+}
+
 .frontfooter {
 	position:relative;
 	border-top-left-radius:10px;
 	border-top-right-radius:10px;
-	height:50px;
+	height:40px;
 	bottom:0px;
 	background:linear-gradient(#dddddd, #AAAAAA);
+	color:#009900;
+	text-align:center;
+	padding-top:10px;
+}
+
+
+.frontfooter a:link {
+	text-decoration:none;
+	color:#009900;
+}
+
+.frontfooter a:visited {
+	text-decoration:none;
+	color:#009900;
+}
+
+.frontfooter a:active {
+	text-decoration:none;
+	color:#009900;
+}
+
+.frontfooter a:hover {
+	text-decoration:none;
+	color:#00AA00;
 }

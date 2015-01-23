@@ -32,7 +32,7 @@
 						<a class="menuelement" href="">Profil</a>
 						<a class="menuelement" href="">Einstellungen</a>
 						<a class="menuelement" href="">Hilfe</a>
-						<a class="menuelement" href="">Logout</a>
+						<a class="menuelement" href="logout.php">Logout</a>
 						<div class="finalelement"></div>
 					</form>
 				</div>
