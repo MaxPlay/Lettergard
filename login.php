@@ -5,29 +5,30 @@
 	include 'connect.php';
 	include 'pbkdf2.php';
 	
-	$usermail = $_POST["user"];
-	$password = $_POST["pw"];
+	$usermail = $_POST["Mail"];
+	$password = $_POST["Password"];
 	
 	
 	$db_check_user = "SELECT userMail, userPassword FROM user WHERE userMail LIKE '$usermail' LIMIT 1";
-	$db_check_user_output = mysql_query($db_check_user);
-	$db_check_user_output_query = mysql_fetch_object($db_check_user_output);
+	$db_check_user_output = mysqli_query($conn, $db_check_user);
+	$db_check_user_output_query = mysqli_fetch_object($db_check_user_output);
 	
-	if ($db_check_user_output_query->userPassword == validate_password($password))
+	if (validate_password($password, $db_check_user_output_query->userPassword))
 		{
 			
 	$db_check_user = "SELECT * FROM user WHERE userName LIKE '$usermail' LIMIT 1";
-	$db_check_user_output = mysql_query($db_check_user);
-	$db_check_user_output_query = mysql_fetch_object($db_check_user_output);
+	$db_check_user_output = mysqli_query($conn, $db_check_user);
+	$db_check_user_output_query = mysqli_fetch_object($db_check_user_output);
 	
 		$_SESSION['id'] = $db_check_user_output_query->userID;
 		$_SESSION['name'] = $db_check_user_output_query->userName;
 		$_SESSION['premium'] = $db_check_user_output_query->userPremium;
-		
+		mysqli_close($conn);
 		header("location:index.php?loginnew=1");
 		}
 	else
 		{
+		mysqli_close($conn);
 		header("location:front.php?error=1");
 		}
 ?>

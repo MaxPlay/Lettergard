@@ -12,6 +12,7 @@ header {
 	position:relative;
 	top:0px;
 	margin:0 auto;
+	z-index:2;
 }
 
 header .content {
@@ -137,7 +138,7 @@ header .content .searchbar {
 	width:200px;
 	padding:0px 10px;
 	position:relative;
-	z-index:2;
+	z-index:3;
 	background:#eeeeee;
 	transition:background 0.2s;
 }
@@ -198,13 +199,85 @@ nav {
 }
 
 nav .content {
+	float:left;
+	clear:both;
+	margin:0px 5px 10px 5px;
+	color:#666666;
+}
+
+nav .content .contentelement{
+	float:left;
+	clear:both;
+	font-family:sans-serif;
 	
 }
 
+nav .content .contentelement .elementheader {
+	float:left;
+	font-size:14px;
+	color:#999999;
+	padding-top:13px;
+}
+
+nav .content .contentelement  .elementcontent {
+	float:left;
+	font-size:30px;
+	clear:both;
+}
+
+nav .content .contentelement .elementlink:link {
+	margin:1px 0px;
+	float:left;
+	font-size:16px;
+	height:20px;
+	width:320px;
+	padding:5px;
+	color:#999;
+	text-decoration:none;
+	background:linear-gradient(#eee,#ccc);
+	border-top-right-radius:10px;
+	border-bottom-right-radius:10px;
+}
+
+nav .content .contentelement .elementlink:visited {
+	color:#999;
+}
+
+nav .content .contentelement .elementlink:active {
+	color:#999;
+}
+
+nav .content .contentelement .elementlink:hover {
+	background:linear-gradient(#ccc,#eee);
+}
+
+nav .content .contentelement .elementfakelink {
+	margin:1px 0px;
+	float:left;
+	font-size:16px;
+	height:20px;
+	width:320px;
+	padding:5px;
+	color:#999;
+	text-decoration:none;
+	background:#eee;
+}
+
+.upperElement {
+	border-top-left-radius:10px;
+}
+
+.lowerElement {
+	border-bottom-left-radius:10px;
+}
+
 nav footer {
-	margin:0px 5px 10px 5px;
+	float:left;
+	clear:both;
+	margin-bottom:10px;
 	color:#009900;
 	text-align:center;
+	width:100%;
 }
 
 nav footer a:link {

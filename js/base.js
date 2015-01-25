@@ -39,6 +39,8 @@ function getVisibleText(string) {
 
 function ValidateInput(string) {
 	var input = document.getElementById(string);
+	if(string == "PW1" && document.getElementById("PW2").value.length > 0)
+		ValidatePW();
 	if (input.value.length > 0) {
         input.style.borderColor = "#00aa00";
 		document.getElementById("submit").disabled = true;
