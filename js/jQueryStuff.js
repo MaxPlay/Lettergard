@@ -21,4 +21,23 @@ $(document).ready(function() {
 			$(".loginVolume").fadeOut("fast");
 		}
 	});
+	
+	$(".deleteAccount").click(function() {
+		if($(this).height() == '120')
+		{
+		$(this).animate({
+			height:'20px'
+		});
+		$(".deleteInner").fadeOut();
+		return;
+		}
+		
+		if($(this).height() == '20')
+		{
+		$(".deleteInner").fadeIn();
+		$(this).animate({
+			height:'120px'
+		});
+		}
+	});
 });

@@ -5,7 +5,7 @@ if($_SERVER["HTTPS"] != "on")
     exit();
 }
 
-$conn = new mysqli("localhost","root","", "lettergard");
+$conn = new mysqli("localhost","root","pXTK8xFPyhfvK5EE", "lettergard");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 

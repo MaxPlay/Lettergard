@@ -9,7 +9,7 @@
 function getFollowerCount($id) {
 	include 'connect.php';
 	
-	$sql = "SELECT * FROM `follow` WHERE `followFollower` = $id";
+	$sql = "SELECT * FROM `follow` WHERE `followFollower` = '$id'";
 	
 	return mysqli_num_rows(mysqli_query($conn, $sql));
 	
@@ -24,7 +24,7 @@ function getFollowerCount($id) {
 function getFollowedCount($id) {
 	include 'connect.php';
 	
-	$sql = "SELECT * FROM `follow` WHERE `followFollow` = $id";
+	$sql = "SELECT * FROM `follow` WHERE `followFollow` = '$id'";
 	
 	return mysqli_num_rows(mysqli_query($conn, $sql));
 	

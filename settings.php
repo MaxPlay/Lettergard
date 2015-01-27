@@ -39,6 +39,7 @@
 		?>
 		</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/settings.css">
 		<link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
 		<script src="js/jquery-1.11.2.min.js"></script>
 		<script src="js/angular.min.js"></script>
@@ -174,7 +175,16 @@
 				switch($id)
 				{
 				case 0:
-					echo "Account";
+					?>
+					<!-- Account -->
+					<div class="settingsElement">
+						<div class="deleteAccount" id="deleteAccount">Account l&ouml;schen<br>
+							<div class="deleteInner" style="display:none;"><span style="color:#f00;">ACHTUNG:<br>Diesen Schritt kannst du nicht mehr r&uuml;ckg&auml;ngig machen.</span><br></br>
+							<a href="deleteAccount.php?real=1">Account endg&uuml;ltig l&ouml;schen</a></div>
+						</div>
+					</div>
+					<?php
+					
 					break;
 				case 1:
 					echo "Datenschutzeinstellungen";
@@ -191,12 +201,6 @@
 				}
 			?>
 			</div>
-			<script>
-				function customersController($scope,$http) {
-					$http.get("getPosts.php?")
-					.success(function(response) {$scope.posts = response;});
-				}
-			</script>
 		</div>
 	</body>
 </html>

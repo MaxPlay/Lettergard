@@ -1,0 +1,47 @@
+.settingsElement {
+	float:left;
+	clear:both;
+	margin:5px 10px;
+	background:#eee;
+	color:#666;
+	width:calc(100% - 20px);
+	border-radius:10px;
+	min-height:50px;
+}
+
+.settingsElement .deleteAccount {
+	border:0px;
+	background:#ccc;
+	border-radius:10px;
+	padding:1px 10px;
+	font-size:16px;
+	margin:10px;
+	text-align:center;
+	height:20px;
+}
+
+.settingsElement .deleteAccount .deleteInner a:link {
+	border:0px;
+	background:#bbb;
+	border-radius:10px;
+	padding:1px 10px;
+	font-size:16px;
+	margin:10px;
+	text-align:center;
+	text-decoration:none;
+	color:#333;
+	transition:background 0.2s, color 0.2s;
+}
+
+.settingsElement .deleteAccount .deleteInner a:visited {
+	color:#333;
+}
+
+.settingsElement .deleteAccount .deleteInner a:active {
+	color:#333;
+}
+
+.settingsElement .deleteAccount .deleteInner a:hover {
+	background:#999;
+	color:#fff;
+}
