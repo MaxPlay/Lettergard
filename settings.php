@@ -39,7 +39,9 @@
 		?>
 		</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
-		<link rel="stylesheet" type="text/css" href="css/settings.css">
+		<?php 
+			echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/settings.css\">\n";
+		?>
 		<link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
 		<script src="js/jquery-1.11.2.min.js"></script>
 		<script src="js/angular.min.js"></script>
@@ -187,16 +189,35 @@
 					
 					break;
 				case 1:
-					echo "Datenschutzeinstellungen";
+					?>
+					<!-- Datenschutzeinstellungen -->
+					
+					<?php
 					break;
 				case 2:
-					echo "Profil";
+					?>
+					<!-- Profil -->
+					
+					<?php
 					break;
 				case 3:
-					echo "Mitteilungen";
+					?>
+					<!-- Mitteilungen -->
+					
+					<?php
 					break;
 				case 4:
-					echo "Design";
+					?>
+					<!-- Design -->
+					<div class="settingsElement">
+					Dir gefallen die Farben der Website nicht? Dann &auml;nder sie!
+							<a class="sitedesign" href="changeSettings.php?scheme=0"><img src="img/Designs/Green.png"></a>
+							<a class="sitedesign" href="changeSettings.php?scheme=1"><img src="img/Designs/Purple.png"></a>
+							<a class="sitedesign" href="changeSettings.php?scheme=2"><img src="img/Designs/Turkis.png"></a>
+							<a class="sitedesign" href="changeSettings.php?scheme=3"><img src="img/Designs/Rust.png"></a>
+							<a class="sitedesign" href="changeSettings.php?scheme=4"><img src="img/Designs/Gold.png"></a>
+					</div>
+					<?php
 					break;
 				}
 			?>

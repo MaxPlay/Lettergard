@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title></title>
+		<title>lettergard - <?php echo $_SESSION['name'];?></title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
 		<script src="js/jquery-1.11.2.min.js"></script>
@@ -48,29 +48,29 @@
 						<div class="username"><?php echo $_SESSION['name']?></div>
 					</div>
 				
-					<form>
-						<div id="postTextAreaSide" role="textbox" class="post_text" maxlength="1000" contenteditable="true" aria-multiline="true" spellcheck="true" dir="ltr" aria-autocomplete="list" aria-expanded="false" OnKeyPress="updateLength()"></div>
+					<form id="postForm" method="post">
+						<div name="Post" id="postTextAreaSide" role="textbox" class="post_text" maxlength="1000" contenteditable="true" aria-multiline="true" spellcheck="true" dir="ltr" aria-autocomplete="list" aria-expanded="false" OnKeyPress="updateLength()"></div>
 						<button class="post_button" id="postButtonSide">Post</button>
 						<div class="post_length" id="postLengthValueSide">1000</div>
 					</form>
 				</div>
 				<div class="content">
 					<div class="contentelement">
-						<div class="elementcontent"><?php 
-							echo getFollowerCount($_SESSION['id']);
-						?></div>
+						<div class="elementcontent">
+							<div class="FollowerCount"></div>
+						</div>
 						<div class="elementheader">&nbsp;Follower</div>
 					</div>
 					<div class="contentelement">
-						<div class="elementcontent"><?php 
-							echo getFollowedCount($_SESSION['id']);
-						?></div>
+						<div class="elementcontent">
+							<div class="FollowedCount"></div>
+						</div>
 						<div class="elementheader">&nbsp;Leuten denen Du folgst</div>
 					</div>
 					<div class="contentelement">
-						<div class="elementcontent"><?php 
-							echo getPostCount($_SESSION['id']);
-						?></div>
+						<div class="elementcontent">
+							<div class="PostCount"></div>
+						</div>
 						<div class="elementheader">&nbsp;Anzahl deiner Posts</div>
 					</div>
 				</div>
@@ -85,11 +85,12 @@
 				<div class="timelineelement timelineend"><div class="end">Nothing more to load.</div></div>
 			</div>
 			<script>
-				function customersController($scope,$http) {
+				/*function customersController($scope,$http) {
 					$http.get("getPosts.php?")
 					.success(function(response) {$scope.posts = response;});
-				}
+				}*/
 			</script>
 		</div>
+		<div id="SentError" style="display:none;">Nachricht konnte nicht versendet werden.</div>
 	</body>
 </html>

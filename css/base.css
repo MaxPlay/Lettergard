@@ -7,6 +7,17 @@ html, body {
 	height:100%;
 }
 
+#SentError {
+	padding:5px; 
+	border:#f00 solid 1px; 
+	background:#f66; 
+	position:fixed; 
+	color:#600; 
+	top:20px; 
+	z-index:100;
+	margin:0 300px;
+}
+
 header { 
 	width:850px;
 	position:relative;

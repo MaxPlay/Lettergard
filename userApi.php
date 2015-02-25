@@ -45,4 +45,16 @@ function getPostCount($id) {
 	
 	mysqli_close($conn);
 }
+
+/**
+ * Sets the scheme of the website.
+ * $id = The id of the scheme
+ * $User = The User-ID
+ **/
+function setScheme($id, $User) {
+	include 'connect.php';
+	
+	echo $sql = "UPDATE `settings` SET `settingsDesign` = $id WHERE `settingsUser` = $User";
+	return mysqli_query($conn, $sql);
+}
 ?>

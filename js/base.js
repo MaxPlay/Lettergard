@@ -33,7 +33,7 @@ function getVisibleText(string) {
 	string = string.replace(/\<span id="overload"\>/g,"");
 	string = string.replace(/\<\/span\>/g,"");
 	
-	console.log(string);
+	//console.log(string);
 	return string;
 }
 
