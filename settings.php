@@ -38,8 +38,8 @@
 		}
 		?>
 		</title>
-		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<?php 
+		include "header.php";
 			echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/settings.css\">\n";
 		?>
 		<link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
@@ -52,7 +52,7 @@
 		<header>
 			<div class="content">
 				<div style="float:left;width:50px;">&nbsp;</div>
-				<span class="title">lettergard</span>
+				<a class="title" href="index.php">lettergard</a>
 				<div style="float:left;width:100px;">&nbsp;</div>
 				<form class="searcharea">
 					<input type="textbox" class="searchbar">
@@ -76,6 +76,12 @@
 				<div class="user">
 				
 					<div class="user_info">
+					<?php 
+					if(file_exists("img/Avatars/" . $_SESSION['id'] . $_SESSION['name'] . ".png"))
+						{ echo "<img src=\"img/Avatars/" . $_SESSION['id'] . $_SESSION['name'] . ".png\" class=\"user_img\">\n"; }
+					else
+						{ echo "<img src=\"img/Avatars/default.png\" class=\"user_img\" height=\"90\" width=\"90\"> \n"; }
+					?>
 						<div class="username"><?php echo $_SESSION['name']?></div>
 					</div>
 				
@@ -211,11 +217,11 @@
 					<!-- Design -->
 					<div class="settingsElement">
 					Dir gefallen die Farben der Website nicht? Dann &auml;nder sie!
-							<a class="sitedesign" href="changeSettings.php?scheme=0"><img src="img/Designs/Green.png"></a>
-							<a class="sitedesign" href="changeSettings.php?scheme=1"><img src="img/Designs/Purple.png"></a>
-							<a class="sitedesign" href="changeSettings.php?scheme=2"><img src="img/Designs/Turkis.png"></a>
-							<a class="sitedesign" href="changeSettings.php?scheme=3"><img src="img/Designs/Rust.png"></a>
-							<a class="sitedesign" href="changeSettings.php?scheme=4"><img src="img/Designs/Gold.png"></a>
+							<a <?php if(getScheme($_SESSION['id']) == 0) {echo "class=\"Activesitedesign\"";} else {echo "class=\"sitedesign\"";} ?> href="changeSettings.php?scheme=0"><img src="img/Designs/Green.png"></a>
+							<a <?php if(getScheme($_SESSION['id']) == 1) {echo "class=\"Activesitedesign\"";} else {echo "class=\"sitedesign\"";} ?> href="changeSettings.php?scheme=1"><img src="img/Designs/Purple.png"></a>
+							<a <?php if(getScheme($_SESSION['id']) == 2) {echo "class=\"Activesitedesign\"";} else {echo "class=\"sitedesign\"";} ?> href="changeSettings.php?scheme=2"><img src="img/Designs/Turkis.png"></a>
+							<a <?php if(getScheme($_SESSION['id']) == 3) {echo "class=\"Activesitedesign\"";} else {echo "class=\"sitedesign\"";} ?> href="changeSettings.php?scheme=3"><img src="img/Designs/Rust.png"></a>
+							<a <?php if(getScheme($_SESSION['id']) == 4) {echo "class=\"Activesitedesign\"";} else {echo "class=\"sitedesign\"";} ?> href="changeSettings.php?scheme=4"><img src="img/Designs/Gold.png"></a>
 					</div>
 					<?php
 					break;

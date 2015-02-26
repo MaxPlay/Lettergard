@@ -11,9 +11,11 @@ function getFollowerCount($id) {
 	
 	$sql = "SELECT * FROM `follow` WHERE `followFollower` = '$id'";
 	
-	return mysqli_num_rows(mysqli_query($conn, $sql));
+	$ret = mysqli_num_rows(mysqli_query($conn, $sql));
 	
 	mysqli_close($conn);
+	
+	return $ret;
 }
 
 /**
@@ -26,9 +28,11 @@ function getFollowedCount($id) {
 	
 	$sql = "SELECT * FROM `follow` WHERE `followFollow` = '$id'";
 	
-	return mysqli_num_rows(mysqli_query($conn, $sql));
+	$ret = mysqli_num_rows(mysqli_query($conn, $sql));
 	
 	mysqli_close($conn);
+	
+	return $ret;
 }
 
 /**
@@ -41,9 +45,11 @@ function getPostCount($id) {
 	
 	$sql = "SELECT * FROM `posts` WHERE `postUser` = $id";
 	
-	return mysqli_num_rows(mysqli_query($conn, $sql));
+	$ret = mysqli_num_rows(mysqli_query($conn, $sql));
 	
 	mysqli_close($conn);
+	
+	return $ret;
 }
 
 /**
@@ -54,7 +60,27 @@ function getPostCount($id) {
 function setScheme($id, $User) {
 	include 'connect.php';
 	
-	echo $sql = "UPDATE `settings` SET `settingsDesign` = $id WHERE `settingsUser` = $User";
-	return mysqli_query($conn, $sql);
+	$sql = "UPDATE `settings` SET `settingsDesign` = $id WHERE `settingsUser` = $User";
+	mysqli_query($conn, $sql);
+	
+	mysqli_close($conn);
+}
+
+
+/**
+ * Gets the scheme of the website.
+ * $User = The User-ID
+ * return = the id of the active scheme
+ **/
+function getScheme($User) {
+	include 'connect.php';
+	
+	$sql = "SELECT `settingsUser` , `settingsDesign` FROM `settings` WHERE `settingsUser` = $User";
+	
+	$ret = mysqli_fetch_object(mysqli_query($conn, $sql))->settingsDesign;
+	
+	mysqli_close($conn);
+	
+	return $ret;
 }
 ?>

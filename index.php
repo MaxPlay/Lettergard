@@ -10,7 +10,9 @@
 <html>
 	<head>
 		<title>lettergard - <?php echo $_SESSION['name'];?></title>
-		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<?php 
+		include "header.php";
+		?>
 		<link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
 		<script src="js/jquery-1.11.2.min.js"></script>
 		<script src="js/angular.min.js"></script>
@@ -21,7 +23,7 @@
 		<header>
 			<div class="content">
 				<div style="float:left;width:50px;">&nbsp;</div>
-				<span class="title">lettergard</span>
+				<a class="title" href="index.php">lettergard</a>
 				<div style="float:left;width:100px;">&nbsp;</div>
 				<form class="searcharea">
 					<input type="textbox" class="searchbar">
@@ -43,8 +45,14 @@
 		<div id="wrapper">
 			<nav>
 				<div class="user">
-				
+					
 					<div class="user_info">
+					<?php 
+					if(file_exists("img/Avatars/" . $_SESSION['id'] . $_SESSION['name'] . ".png"))
+						{ echo "<img src=\"img/Avatars/" . $_SESSION['id'] . $_SESSION['name'] . ".png\" class=\"user_img\">\n"; }
+					else
+						{ echo "<img src=\"img/Avatars/default.png\" class=\"user_img\" height=\"90\" width=\"90\"> \n"; }
+					?>
 						<div class="username"><?php echo $_SESSION['name']?></div>
 					</div>
 				

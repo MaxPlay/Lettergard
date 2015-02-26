@@ -29,7 +29,7 @@ header {
 header .content {
 	position:fixed;
 	display:block;
-	background: linear-gradient(#33cc33 5%, #009900, #003300);
+	background: linear-gradient(#CC4A39 5%, #A12F1B, #611601);
 	float:left;
 	width:848px;
 	height:50px;
@@ -46,6 +46,7 @@ header .content .title {
 	top:10px;
 	margin:10px;
 	float:left;
+	text-decoration:none;
 }
 
 header .content .menu {
@@ -65,8 +66,8 @@ header .content .menu .menuVolume .firstelement {
 	padding:2px 8px;
 	height:10px;
 	width:150px;
-	background:#33cc33;
-	border-bottom:1px solid #009900;
+	background:#CC4A39;
+	border-bottom:1px solid #A12F1B;
 	opacity:0.8;
 	border-top-left-radius:10px;
 	border-top-right-radius:10px;
@@ -79,8 +80,8 @@ header .content .menu .menuVolume .menuelement:link {
 	padding:2px 8px;
 	height:20px;
 	width:150px;
-	background:#33cc33;
-	border-bottom:1px solid #009900;
+	background:#CC4A39;
+	border-bottom:1px solid #A12F1B;
 	font-family:sans-serif;
 	color:#ffffff;
 	opacity:0.8;
@@ -94,8 +95,8 @@ header .content .menu .menuVolume .menuelement:active {
 	padding:2px 8px;
 	height:20px;
 	width:150px;
-	background:#33cc33;
-	border-bottom:1px solid #009900;
+	background:#CC4A39;
+	border-bottom:1px solid #A12F1B;
 	font-family:sans-serif;
 	color:#ffffff;
 	opacity:0.8;
@@ -109,8 +110,8 @@ header .content .menu .menuVolume .menuelement:visited {
 	padding:2px 8px;
 	height:20px;
 	width:150px;
-	background:#33cc33;
-	border-bottom:1px solid #009900;
+	background:#CC4A39;
+	border-bottom:1px solid #A12F1B;
 	font-family:sans-serif;
 	color:#ffffff;
 	opacity:0.8;
@@ -120,7 +121,7 @@ header .content .menu .menuVolume .menuelement:visited {
 
 header .content .menu .menuVolume .menuelement:hover {
 	opacity:1;
-	background:#66dd66;
+	background:#C77465;
 	text-decoration:underline;
 }
 
@@ -130,7 +131,7 @@ header .content .menu .menuVolume .finalelement {
 	padding:2px 8px;
 	height:15px;
 	width:150px;
-	background:#33cc33;
+	background:#CC4A39;
 	opacity:0.8;
 	border-bottom-left-radius:10px;
 	border-bottom-right-radius:10px;
@@ -193,11 +194,17 @@ nav {
 
 .user_info {
 	padding-top:20px;
-	background:#33cc33;
+	background:#CC4A39;
 	border-top-left-radius:10px;
 	border-top-right-radius:10px;
 	height:100px;
 	width:315px;
+}
+
+.user_img {
+	border:2px solid white;
+	border-radius:7px;
+	margin-left:15px;
 }
 
 .username {
@@ -205,8 +212,8 @@ nav {
 	color:#ffffff;
 	font-size:24px;
 	font-family:sans-serif;
-	top:70px;
-	left:100px;
+	top:-30px;
+	left:130px;
 }
 
 nav .content {
@@ -286,34 +293,34 @@ nav footer {
 	float:left;
 	clear:both;
 	margin-bottom:10px;
-	color:#009900;
+	color:#A12F1B;
 	text-align:center;
 	width:100%;
 }
 
 nav footer a:link {
 	text-decoration:none;
-	color:#009900;
+	color:#A12F1B;
 }
 
 nav footer a:visited {
 	text-decoration:none;
-	color:#009900;
+	color:#A12F1B;
 }
 
 nav footer a:active {
 	text-decoration:none;
-	color:#009900;
+	color:#A12F1B;
 }
 
 nav footer a:hover {
 	text-decoration:none;
-	color:#00AA00;
+	color:#D43E24;
 }
 
 .post_text {
 	position:relative;
-	border:1px solid #33cc33;
+	border:1px solid #CC4A39;
 	border-bottom-left-radius:10px;
 	width:303px;
 	min-height:100px;
@@ -328,7 +335,7 @@ nav footer a:hover {
 	position:relative;
 	top:0px;
 	margin-left:215px;
-	background:#33cc33;
+	background:#CC4A39;
 	border:0;
 	border-bottom-left-radius:10px;
 	border-bottom-right-radius:10px;

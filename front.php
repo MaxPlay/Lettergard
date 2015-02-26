@@ -9,7 +9,7 @@
 <html>
 	<head>
 		<title>lettergard</title>
-		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/base_green.css">
 		<link rel="stylesheet" type="text/css" href="css/front.css">
 		<link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
 		<script src="js/angular.min.js"></script>

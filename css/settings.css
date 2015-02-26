@@ -57,6 +57,16 @@
 	transition:background 0.4s;
 }
 
+.settingsElement .Activesitedesign {
+	float:left;
+	margin:10px;
+	border-radius:3px;
+	padding:4px;
+	padding-bottom:0px;
+	background:#bbbbbb;
+	transition:background 0.4s;
+}
+
 .settingsElement .sitedesign:hover {
 	background:#f6f6f6;
 }
