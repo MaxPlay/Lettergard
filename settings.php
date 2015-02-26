@@ -186,6 +186,20 @@
 					?>
 					<!-- Account -->
 					<div class="settingsElement">
+						<?php
+						if(isValidated($_SESSION['id'])==1)
+						{
+							echo "Du hast deine Emailadresse bestätigt.\n";
+						}
+						else
+						{
+							echo "Deine E-Mailadresse ist noch nicht bestätigt. Wir haben dir eine Aktivierungs-E-Mail zugeschickt.\n";
+							echo "<div id=\"resentMail\" class=\"button\">Ich habe die E-Mail nicht bekommen. <br>Bitte schickt mir eine neue Email zu.</div>\n";
+							echo "<div id=\"mailSent\" style=\"display:none;font-weight:bold;\">Wir haben dir eine E-Mail zugeschickt.</div>\n";
+						}
+						?>
+					</div>
+					<div class="settingsElement">
 						<div class="deleteAccount" id="deleteAccount">Account l&ouml;schen<br>
 							<div class="deleteInner" style="display:none;"><span style="color:#f00;">ACHTUNG:<br>Diesen Schritt kannst du nicht mehr r&uuml;ckg&auml;ngig machen.</span><br></br>
 							<a href="deleteAccount.php?real=1">Account endg&uuml;ltig l&ouml;schen</a></div>

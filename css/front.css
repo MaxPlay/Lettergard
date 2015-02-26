@@ -148,7 +148,7 @@ header .login .loginVolume .finalelement {
 	border-top:1px;
 }
 
-.registerarea .element  button{
+.registerarea .element button{
 	padding:0 10;
 	background:#dddddd;
 	border-radius:10px;
@@ -162,7 +162,7 @@ header .login .loginVolume .finalelement {
 	transition:background 0.2s;
 }
 
-.registerarea .element  button:hover{
+.registerarea .element button:hover{
 	background:#ffffff;
 	border:solid #999999;
 	border-bottom:1px;
@@ -203,4 +203,8 @@ header .login .loginVolume .finalelement {
 .frontfooter a:hover {
 	text-decoration:none;
 	color:#00AA00;
+}
+
+.UserExists {
+	color:#dd0000;
 }

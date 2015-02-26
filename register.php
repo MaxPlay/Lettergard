@@ -4,13 +4,14 @@
 
 include 'connect.php';
 include 'pbkdf2.php';
+include 'userApi.php';
 	
 	$usermail = $_POST["Mail"];
 	$password = $_POST["Password"];
 	$Name = $_POST["UserName"];
 	
-	$sql = "INSERT INTO user(userID, userName, userPassword, userMail, userRegister, userBio, userNickname, userWebsite, userPremium, userValidated) 
-						VALUES (NULL,'$Name','" . create_hash($password) . "','$usermail','" . date('Y-m-d') . "','','$Name','','0','0')";
+	$sql = "INSERT INTO user(userID, userName, userPassword, userMail, userRegister, userBio, userNickname, userWebsite, userPremium, userValidated, userHash) 
+						VALUES (NULL,'$Name','" . create_hash($password) . "','$usermail','" . date('Y-m-d') . "','','$Name','','0','0','". generateRandomString(20) ."')";
 	
 	$result = mysqli_query($conn, $sql);
 	if ($result == true) {

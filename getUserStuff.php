@@ -18,4 +18,9 @@
 			break;
 		}
 	}
+	if(isset($_GET['Username']))
+	{
+		include "userApi.php";
+		echo DoesUserExist($_GET['Username']);
+	}
 ?>

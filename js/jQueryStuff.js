@@ -60,17 +60,21 @@ $(document).ready(function() {
 	e.preventDefault(); //=== To Avoid Page Refresh and Fire the Event "Click"===
 	});
 	
-	$(function getInformation() {
-	$.ajax({url: "getUserStuff.php?v=0&User=2", success: function(result){
-        $(".FollowedCount").html(result);
-    }});
-	$.ajax({url: "getUserStuff.php?v=1&User=2", success: function(result){
-        $(".FollowerCount").html(result);
-    }});
-	$.ajax({url: "getUserStuff.php?v=2&User=2", success: function(result){
-        $(".PostCount").html(result);
-    }});
-    setTimeout(arguments.callee, 200);
-	});
+	$("#resentMail").click(function(){
+		$("#resentMail").fadeOut(200);
+		$("#mailSent").delay(200).fadeIn(200);
+	})
 	
+	$('#UserName').keyup(function() {
+    var username = document.getElementById("UserName").value;
+
+    if(username != ''){
+        $.ajax({url: "getUserStuff.php?Username="+username, success: function(result){
+			if(result>0)
+				$(".UserExists").html("Username ist bereits vergeben.");
+			else
+				$(".UserExists").html("");
+		}});
+    }
+	});
 });

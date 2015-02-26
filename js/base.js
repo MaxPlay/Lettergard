@@ -37,18 +37,77 @@ function getVisibleText(string) {
 	return string;
 }
 
+//http://www.html-world.de/586/kluge-e-mail-adressen-validation/
+function EMail(s)
+{
+ var a = false;
+ var res = false;
+ if(typeof(RegExp) == 'function')
+ {
+  var b = new RegExp('abc');
+  if(b.test('abc') == true){a = true;}
+  }
+
+ if(a == true)
+ {
+  reg = new RegExp('^([a-zA-Z0-9-._]+)'+
+                   '(@)([a-zA-Z0-9-.]+)'+
+                   '(.)([a-zA-Z]{2,4})$');
+  res = (reg.test(s));
+ }
+ else
+ {
+  res = (s.search('@') >= 1 &&
+         s.lastIndexOf('.') > s.search('@') &&
+         s.lastIndexOf('.') >= s.length-5)
+ }
+ return(res);
+}
+
 function ValidateInput(string) {
 	var input = document.getElementById(string);
-	if(string == "PW1" && document.getElementById("PW2").value.length > 0)
+	if(string == "PW1" && document.getElementById("PW2").value.length > 0) {
 		ValidatePW();
-	if (input.value.length > 0) {
-        input.style.borderColor = "#00aa00";
-		document.getElementById("submit").disabled = true;
-    }
+		return;
+	}
+	if(string == "Mail") {
+		if (input.value.length > 0) {
+			if(EMail(input.value))
+			{
+				input.style.borderColor = "#00aa00";
+				return;
+			}
+			else
+			{
+				input.style.borderColor = "#aa0000";
+				return;
+			}
+		}
+	}
+	if(string == "UserName") {
+		if (input.value.length > 3) {
+			input.style.borderColor = "#00aa00";
+			return;
+		}
+		else
+		{
+			input.style.borderColor = "#aa0000";
+			return;
+		}
+	}
+}
+
+function ValidateForm() {
+	var input1 = document.getElementById("UserName");
+	var input2 = document.getElementById("Mail");
+	if(input1.value.length > 3 && EMail(input2.value) && ValidatePW())
+	{
+		console.log("mudda");
+		document.getElementById("submit").disabled = false;
+	}
 	else
 	{
-        input.style.borderColor = "#aa0000";
-		document.getElementById("submit").disabled = false;
+		document.getElementById("submit").disabled = true;
 	}
 }
 
@@ -56,11 +115,13 @@ function ValidatePW() {
 	var PW1 = document.getElementById("PW1");
     var PW2 = document.getElementById("PW2");
 	if (PW1.value != PW2.value) {
+        document.getElementById("PW1").style.borderColor = "#aa0000";
         document.getElementById("PW2").style.borderColor = "#aa0000";
-		document.getElementById("submit").disabled = true;
+		return false;
     }
 	else {
+        document.getElementById("PW1").style.borderColor = "#00aa00";
         document.getElementById("PW2").style.borderColor = "#00aa00";
-		document.getElementById("submit").disabled = false;
+		return true;
 	}
 }

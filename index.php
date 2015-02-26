@@ -18,6 +18,7 @@
 		<script src="js/angular.min.js"></script>
 		<script src="js/base.js"></script>
 		<script src="js/jQueryStuff.js"></script>
+		<script src="js/jQueryRefresh.js"></script>
 	</head>
 	<body>
 		<header>
