@@ -77,9 +77,14 @@
 				
 					<div class="user_info">
 					<?php 
-					if(file_exists("img/Avatars/" . $_SESSION['id'] . $_SESSION['name'] . ".png"))
-						{ echo "<img src=\"img/Avatars/" . $_SESSION['id'] . $_SESSION['name'] . ".png\" class=\"user_img\">\n"; }
-					else
+						
+						$filename = $_SESSION['id'] . $_SESSION['name'];
+						
+						$files = glob("img/Avatars/$filename.*"); // Will find all files regardless of extension
+						
+						if (count($files) == 1)
+						{ echo "<img src=\"" . $files[0] . "\" class=\"user_img\" height=\"90\" width=\"90\">\n"; }
+						else
 						{ echo "<img src=\"img/Avatars/default.png\" class=\"user_img\" height=\"90\" width=\"90\"> \n"; }
 					?>
 						<div class="username"><?php echo $_SESSION['name']?></div>
@@ -217,7 +222,25 @@
 				case 2:
 					?>
 					<!-- Profil -->
-					
+					<div class="settingsElement">
+						<?php
+						
+						$filename = $_SESSION['id'] . $_SESSION['name'];
+						
+						$files = glob("img/Avatars/$filename.*"); // Will find all files regardless of extension
+						
+						if (count($files) == 1)
+							{ echo "<img src=\"" . $files[0] . "\" height=\"90\" width=\"90\">\n"; }
+						else
+							{ echo "<img src=\"img/Avatars/default.png\" height=\"90\" width=\"90\"> \n"; }
+						?>
+						<b>Dein Avatar</b><br>
+						<form action="upload_file.php" method="post" enctype="multipart/form-data">
+							<label for="file">Filename:</label>
+							<input type="file" name="file" id="file"><br>
+							<input type="submit" name="submit" value="Upload" class="button">
+						</form>
+					</div>
 					<?php
 					break;
 				case 3:

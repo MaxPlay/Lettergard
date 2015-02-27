@@ -89,3 +89,10 @@
 	background:#999;
 	color:#fff;
 }
+
+.settingsElement img {
+	float:left;
+	border:2px solid white;
+	border-radius:7px;
+	margin:0px 15px;
+}

@@ -49,9 +49,14 @@
 					
 					<div class="user_info">
 					<?php 
-					if(file_exists("img/Avatars/" . $_SESSION['id'] . $_SESSION['name'] . ".png"))
-						{ echo "<img src=\"img/Avatars/" . $_SESSION['id'] . $_SESSION['name'] . ".png\" class=\"user_img\">\n"; }
-					else
+						
+						$filename = $_SESSION['id'] . $_SESSION['name'];
+						
+						$files = glob("img/Avatars/$filename.*"); // Will find all files regardless of extension
+						
+						if (count($files) == 1)
+						{ echo "<img src=\"" . $files[0] . "\" class=\"user_img\" height=\"90\" width=\"90\">\n"; }
+						else
 						{ echo "<img src=\"img/Avatars/default.png\" class=\"user_img\" height=\"90\" width=\"90\"> \n"; }
 					?>
 						<div class="username"><?php echo $_SESSION['name']?></div>
