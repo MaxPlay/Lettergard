@@ -60,6 +60,40 @@ $(document).ready(function() {
 	e.preventDefault(); //=== To Avoid Page Refresh and Fire the Event "Click"===
 	});
 	
+	
+	//This code is for updating the bio
+	$('#bioForm').on('submit',function(e) {
+
+		$.ajax({
+		url:'updateBio.php',
+		data: { 'Post': document.getElementById("bioTextArea").innerHTML},
+		type:'POST',
+		success:function(data){
+			console.log(data);
+			},
+		error:function(data){
+			}
+		});
+	e.preventDefault(); //=== To Avoid Page Refresh and Fire the Event "Click"===
+	});
+	
+	//This code is for updating the bio
+	$('#MailPost').on('submit',function(e) {
+
+		$.ajax({
+		url:'updateMail.php',
+		data: { 'Post': document.getElementById("mailTextArea").innerHTML},
+		type:'POST',
+		success:function(data){
+			console.log(data);
+			$("#MailUpdated").fadeIn("fast").delay(2000).fadeOut();
+			},
+		error:function(data){
+			}
+		});
+	e.preventDefault(); //=== To Avoid Page Refresh and Fire the Event "Click"===
+	});
+	
 	$("#resentMail").click(function(){
 		$("#resentMail").fadeOut(200);
 		$("#mailSent").delay(200).fadeIn(200);
@@ -76,5 +110,20 @@ $(document).ready(function() {
 				$(".UserExists").html("");
 		}});
     }
+	});
+	
+	$('#resentMail').click(function() {
+
+		$.ajax({
+		url:'SendMail.php',
+		data: { },
+		type:'POST',
+		success:function(data){
+			console.log(data);
+			},
+		error:function(data){
+			}
+		});
+	e.preventDefault(); //=== To Avoid Page Refresh and Fire the Event "Click"===
 	});
 });

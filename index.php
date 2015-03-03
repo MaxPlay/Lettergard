@@ -12,6 +12,7 @@
 		<title>lettergard - <?php echo $_SESSION['name'];?></title>
 		<?php 
 		include "header.php";
+			echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/addition.css\">\n";
 		?>
 		<link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
 		<script src="js/jquery-1.11.2.min.js"></script>
@@ -19,6 +20,19 @@
 		<script src="js/base.js"></script>
 		<script src="js/jQueryStuff.js"></script>
 		<script src="js/jQueryRefresh.js"></script>
+		<?php
+		
+	if(isset($_GET['val'])) {
+		validate($_GET['val']);
+		
+		print "<script>";
+print "$(document).ready(function() {";
+			print "$(\"#Validated\").fadeIn(\"fast\").delay(2000).fadeOut();";
+print "});";
+print "</script>";
+
+	}
+		?>
 	</head>
 	<body>
 		<header>
@@ -59,11 +73,11 @@
 						else
 						{ echo "<img src=\"img/Avatars/default.png\" class=\"user_img\" height=\"90\" width=\"90\"> \n"; }
 					?>
-						<div class="username"><?php echo $_SESSION['name']?></div>
+						<div class="username"><?php echo getNickname($_SESSION['id'])?></div>
 					</div>
 				
 					<form id="postForm" method="post">
-						<div name="Post" id="postTextAreaSide" role="textbox" class="post_text" maxlength="1000" contenteditable="true" aria-multiline="true" spellcheck="true" dir="ltr" aria-autocomplete="list" aria-expanded="false" OnKeyPress="updateLength()"></div>
+						<div name="Post" id="postTextAreaSide" role="textbox" class="post_text" maxlength="1000" contenteditable="true" aria-multiline="true" spellcheck="true" dir="ltr" aria-autocomplete="list" aria-expanded="false" OnKeyPress="updateBioLength()"></div>
 						<button class="post_button" id="postButtonSide">Post</button>
 						<div class="post_length" id="postLengthValueSide">1000</div>
 					</form>
@@ -106,5 +120,6 @@
 			</script>
 		</div>
 		<div id="SentError" style="display:none;">Nachricht konnte nicht versendet werden.</div>
+		<div id="Validated" style="display:none;">Du hast deine E-Mailadresse best&auml;tigt.</div>
 	</body>
 </html>

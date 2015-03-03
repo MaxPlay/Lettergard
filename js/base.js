@@ -28,6 +28,34 @@ var _length = 0;
 	document.getElementById("postLengthValueSide").innerHTML = _length;
 }
 
+function updateBioLength() {
+var _length = 0;
+	str = document.getElementById("bioTextArea").innerHTML;
+	_length = 1000 - getVisibleText(str).length;
+	
+	if(_length<10) {
+		document.getElementById("bioLengthValue").style.color = "#ff0000";
+	} else if(_length<50) {
+		document.getElementById("bioLengthValue").style.color = "#ff9900";
+		}
+		else if(_length<100)
+		{
+		document.getElementById("bioLengthValue").style.color = "#eeee00";
+		} else {
+		document.getElementById("bioLengthValue").style.color = "#aaaaaa";
+		}
+		
+		if(_length<0) {
+		document.getElementById("bioButton").disabled=true;
+		document.getElementById("bioButton").style.background = "#aaaaaa";
+		} else {
+		document.getElementById("bioButton").disabled=false;
+		document.getElementById("bioButton").style.background = "#33cc33";
+		}
+	
+	document.getElementById("bioLengthValue").innerHTML = _length;
+}
+
 function getVisibleText(string) {
 	string = string.replace(/\<br\>/g,"");
 	string = string.replace(/\<span id="overload"\>/g,"");
@@ -123,5 +151,19 @@ function ValidatePW() {
         document.getElementById("PW1").style.borderColor = "#00aa00";
         document.getElementById("PW2").style.borderColor = "#00aa00";
 		return true;
+	}
+}
+
+function CheckNewMail(id, button) {
+	var input = document.getElementById(id).innerHTML;
+	input = input.substring(3);
+	
+	if(EMail(input))
+	{
+		document.getElementById(button).disabled = false;
+	}
+	else
+	{
+		document.getElementById(button).disabled = true;
 	}
 }

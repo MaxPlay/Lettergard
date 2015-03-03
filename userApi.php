@@ -134,4 +134,99 @@ function generateRandomString($length = 10) {
     }
     return $randomString;
 }
+
+/**
+ * Gets the Bio for the given user
+ * $User = The UserName
+ * return = returns the full text of the bio
+ **/
+function getBio($User)
+{
+	include 'connect.php';
+	
+	$sql = "SELECT `userID`,`userBio` FROM `user` WHERE `userID` = $User";
+	
+	$ret = mysqli_fetch_object(mysqli_query($conn, $sql))->userBio;
+	
+	mysqli_close($conn);
+	
+	return $ret;
+}
+
+
+/**
+ * Gets the Nick for the given user
+ * $User = The UserName
+ * return = returns the nickname
+ **/
+function getNickname($User)
+{
+	include 'connect.php';
+	
+	$sql = "SELECT `userID`,`userNickname` FROM `user` WHERE `userID` = $User";
+	
+	$ret = mysqli_fetch_object(mysqli_query($conn, $sql))->userNickname;
+	
+	mysqli_close($conn);
+	
+	return $ret;
+}
+
+/**
+ * Gets the Website for the given user
+ * $User = The UserName
+ * return = returns the domain
+ **/
+function getWebsite($User)
+{
+	include 'connect.php';
+	
+	$sql = "SELECT `userID`,`userWebsite` FROM `user` WHERE `userID` = $User";
+	
+	$ret = mysqli_fetch_object(mysqli_query($conn, $sql))->userWebsite;
+	
+	mysqli_close($conn);
+	
+	return $ret;
+}
+
+/**
+ * Gets the Mail of the given user
+ * $User = The UserName
+ * return = returns the mail
+ **/
+function getMail($User)
+{
+	include 'connect.php';
+	
+	$sql = "SELECT `userID`,`userMail` FROM `user` WHERE `userID` = $User";
+	
+	$ret = mysqli_fetch_object(mysqli_query($conn, $sql))->userMail;
+	
+	mysqli_close($conn);
+	
+	return $ret;
+}
+
+/**
+ * Validates the User
+ * $User = The UserName
+ **/
+function validate($hash)
+{
+	include 'connect.php';
+	$User = $_SESSION['id'];
+	
+	$sql = "SELECT `userID`,`userHash` FROM `user` WHERE `userID` = $User";
+	
+	$userHash = mysqli_fetch_object(mysqli_query($conn, $sql))->userHash;
+	
+	if($hash == $userHash)
+	{
+	$sql = "UPDATE `lettergard`.`user` SET `userValidated` = '1' WHERE `user`.`userID` = $User;";
+		
+	mysqli_query($conn, $sql);
+	}
+	mysqli_close($conn);
+}
 ?>

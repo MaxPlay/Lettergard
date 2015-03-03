@@ -87,7 +87,7 @@
 						else
 						{ echo "<img src=\"img/Avatars/default.png\" class=\"user_img\" height=\"90\" width=\"90\"> \n"; }
 					?>
-						<div class="username"><?php echo $_SESSION['name']?></div>
+						<div class="username"><?php echo getNickname($_SESSION['id'])?></div>
 					</div>
 				
 					<form>
@@ -194,15 +194,25 @@
 						<?php
 						if(isValidated($_SESSION['id'])==1)
 						{
-							echo "Du hast deine Emailadresse bestätigt.\n";
+							echo htmlentities("Du hast deine Emailadresse bestätigt.\n");
 						}
 						else
 						{
-							echo "Deine E-Mailadresse ist noch nicht bestätigt. Wir haben dir eine Aktivierungs-E-Mail zugeschickt.\n";
+							echo htmlentities("Deine E-Mailadresse ist noch nicht bestätigt. Wir haben dir eine Aktivierungs-E-Mail zugeschickt.\n");
 							echo "<div id=\"resentMail\" class=\"button\">Ich habe die E-Mail nicht bekommen. <br>Bitte schickt mir eine neue Email zu.</div>\n";
 							echo "<div id=\"mailSent\" style=\"display:none;font-weight:bold;\">Wir haben dir eine E-Mail zugeschickt.</div>\n";
 						}
 						?>
+					</div>
+					<div class="settingsElement">
+						<b>Deine E-Mail</b>
+						<form action="" method="post" id="MailPost">
+							<div class="title">E-Mail</div>
+							<div name="Nickname" id="mailTextArea" role="textbox" class="textfield" maxlength="1000" contenteditable="true" aria-multiline="true" spellcheck="true" dir="ltr" aria-autocomplete="list" aria-expanded="false" OnKeyUp="CheckNewMail('mailTextArea','updateButton')"><?php echo getMail($_SESSION['id']); ?></div>
+
+							<button class="update_button" id="updateButton">Update</button>
+						</form>
+						<h6>HINWEIS: Wenn du deine E-Mailadresse &auml;nderst, musst du sie erneut best&auml;tigen.</h6>
 					</div>
 					<div class="settingsElement">
 						<div class="deleteAccount" id="deleteAccount">Account l&ouml;schen<br>
@@ -241,6 +251,26 @@
 							<input type="submit" name="submit" value="Upload" class="button">
 						</form>
 					</div>
+					<div class="settingsElement">
+						<b>Deine Infos</b>
+						<form action="" method="post">
+							<div class="title">Nickname</div>
+							<div name="Nickname" id="bioTextArea" role="textbox" class="textfield" maxlength="1000" contenteditable="true" aria-multiline="true" spellcheck="true" dir="ltr" aria-autocomplete="list" aria-expanded="false"><?php echo getNickname($_SESSION['id']); ?></div>
+
+							<div class="title">Deine Website</div>
+							<div name="Website" id="bioTextArea" role="textbox" class="textfield" maxlength="1000" contenteditable="true" aria-multiline="true" spellcheck="true" dir="ltr" aria-autocomplete="list" aria-expanded="false"><?php echo getWebsite($_SESSION['id']); ?></div>
+							
+							<button class="update_button" id="updateButton">Update</button>
+						</form>
+					</div>
+					<div class="settingsElement">
+						<b>Deine Biografie</b>
+						<form id="bioForm" method="post">
+							<div name="Post" id="bioTextArea" role="textbox" class="bio_text" maxlength="1000" contenteditable="true" aria-multiline="true" spellcheck="true" dir="ltr" aria-autocomplete="list" aria-expanded="false" OnKeyPress="updateBioLength()"><?php echo getBio($_SESSION['id']); ?></div>
+							<div class="bio_length" id="bioLengthValue"><?php echo 1000-4-strlen(getBio($_SESSION['id'])); ?></div>
+							<button class="bio_button" id="bioButton">Update</button>
+					</form>
+					</div>
 					<?php
 					break;
 				case 3:
@@ -266,5 +296,6 @@
 			?>
 			</div>
 		</div>
+		<div id="MailUpdated" style="display:none;">Mail geupdated.</div>
 	</body>
 </html>

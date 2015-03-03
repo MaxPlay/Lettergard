@@ -9,6 +9,16 @@
 	border-radius:10px;
 	min-height:50px;
 }
+#MailUpdated {
+	padding:5px; 
+	border:#060 solid 1px; 
+	background:#6f6; 
+	position:fixed; 
+	color:#060; 
+	top:20px; 
+	z-index:100;
+	margin:0 300px;
+}
 
 .settingsElement .deleteAccount {
 	border:0px;
@@ -95,4 +105,55 @@
 	border:2px solid white;
 	border-radius:7px;
 	margin:0px 15px;
+}
+
+.settingsElement .bio_text {
+	float:left;
+	border:2px solid white;
+	border-radius:7px;
+	border-bottom-right-radius:0px;
+	margin:0px 15px 5px 15px;
+	width:400px;
+	min-height:100px;
+	resize:vertical;
+	max-height:300px;
+	padding:10px;
+	overflow:auto;
+}
+
+.settingsElement .bio_button {
+	float:left;
+	border:2px solid white;
+	border-radius:7px;
+	margin:0px 15px;
+}
+
+.settingsElement .bio_length {
+	float:left;
+	margin-left:300px;
+}
+
+.settingsElement .title {
+	float:left;
+	margin-left:20px;
+}
+
+.settingsElement .textfield {
+	float:left;
+	border:2px solid white;
+	border-radius:7px;
+	margin:0px 15px 5px 15px;
+	width:400px;
+	height:20px;
+	resize:none;
+	padding:5px;
+	overflow:auto;
+	background:#f9f9f9;
+}
+
+.settingsElement .update_button {
+	float:right;
+	border:2px solid white;
+	border-radius:7px;
+	margin:0px 45px;
 }

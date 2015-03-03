@@ -1,0 +1,10 @@
+#Validated {
+	padding:5px; 
+	border:#060 solid 1px; 
+	background:#6f6; 
+	position:fixed; 
+	color:#060; 
+	top:20px; 
+	z-index:100;
+	margin:0 300px;
+}
