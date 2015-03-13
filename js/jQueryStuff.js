@@ -8,6 +8,8 @@ $(document).ready(function() {
 		$(".menuVolume").fadeOut("fast");
 	});
 	
+	$("#WrongLogin").fadeIn("fast").delay(2000).fadeOut();
+	
 	
 	$(".login").click(function(){
 		$(".loginVolume").fadeIn("fast");
@@ -125,5 +127,24 @@ $(document).ready(function() {
 			}
 		});
 	e.preventDefault(); //=== To Avoid Page Refresh and Fire the Event "Click"===
+	});
+	
+	$('#followButton').click(function() {
+
+		$.ajax({
+		url:'followUser.php',
+		data: { },
+		type:'POST',
+		success:function(data){
+			var inner = document.getElementById("followButton").innerHTML;
+			if(inner.substring(inner.length-9)=="entfolgen")
+				document.getElementById("followButton").innerHTML = inner.substring(0,inner.length-9) + "folgen";
+			else
+				document.getElementById("followButton").innerHTML = inner.substring(0,inner.length-6) + "entfolgen";
+			console.log(inner);
+			},
+		error:function(data){
+			}
+		});
 	});
 });

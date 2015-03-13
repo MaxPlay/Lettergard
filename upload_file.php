@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'lib.php';
+include 'userApi.php';
 
 $allowedExts = array("gif", "jpeg", "jpg", "png");
 $temp = explode(".", $_FILES["file"]["name"]);
@@ -38,7 +39,7 @@ if ((($_FILES["file"]["type"] == "image/gif")
 		doLog(" ");
 		
 
-$filename = $_SESSION['id'] . $_SESSION['name'];
+$filename = getHash($_SESSION['id']);
 						
 $files = glob("img/Avatars/$filename.*"); // Will find all files regardless of extension
 						
@@ -49,7 +50,7 @@ if (count($files) == 1)
 		$path = $_FILES["file"]["name"];
 		$ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
 	
-		rename("img/Avatars/"  . $_FILES["file"]["name"],"img/Avatars/" . $_SESSION['id'] . $_SESSION['name'] . "." . $ext);
+		rename("img/Avatars/"  . $_FILES["file"]["name"],"img/Avatars/" . getHash($_SESSION['id']) . "." . $ext);
 		header("location:settings.php?id=2&SUCCESS=1");
       }
     }

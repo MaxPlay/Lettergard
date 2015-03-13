@@ -9,7 +9,7 @@
 function getFollowerCount($id) {
 	include 'connect.php';
 	
-	$sql = "SELECT * FROM `follow` WHERE `followFollower` = '$id'";
+	$sql = "SELECT * FROM `follow` WHERE `followFollow` = '$id'";
 	
 	$ret = mysqli_num_rows(mysqli_query($conn, $sql));
 	
@@ -26,7 +26,7 @@ function getFollowerCount($id) {
 function getFollowedCount($id) {
 	include 'connect.php';
 	
-	$sql = "SELECT * FROM `follow` WHERE `followFollow` = '$id'";
+	$sql = "SELECT * FROM `follow` WHERE `followFollower` = '$id'";
 	
 	$ret = mysqli_num_rows(mysqli_query($conn, $sql));
 	
@@ -192,7 +192,7 @@ function getWebsite($User)
 
 /**
  * Gets the Mail of the given user
- * $User = The UserName
+ * $User = The UserID
  * return = returns the mail
  **/
 function getMail($User)
@@ -202,6 +202,24 @@ function getMail($User)
 	$sql = "SELECT `userID`,`userMail` FROM `user` WHERE `userID` = $User";
 	
 	$ret = mysqli_fetch_object(mysqli_query($conn, $sql))->userMail;
+	
+	mysqli_close($conn);
+	
+	return $ret;
+}
+
+/**
+ * Gets the generated Hash of the given user
+ * $User = The UserID
+ * return = returns the mail
+ **/
+function getHash($User)
+{
+	include 'connect.php';
+	
+	$sql = "SELECT `userID`,`userHash` FROM `user` WHERE `userID` = $User";
+	
+	$ret = mysqli_fetch_object(mysqli_query($conn, $sql))->userHash;
 	
 	mysqli_close($conn);
 	
@@ -228,5 +246,32 @@ function validate($hash)
 	mysqli_query($conn, $sql);
 	}
 	mysqli_close($conn);
+}
+
+function folgstDu() {
+	include 'connect.php';
+	$User = $_SESSION['id'];
+	$FollowUser = $_SESSION['visit'];
+	
+	$sql = "SELECT `followFollow`, `followFollower` FROM `follow` WHERE `followFollow` = '$FollowUser' AND `followFollower` = '$User' ";
+	
+	$return = mysqli_num_rows(mysqli_query($conn, $sql));
+	
+	mysqli_close($conn);
+	
+	return $return;
+}
+function folgtDir() {
+	include 'connect.php';
+	$User = $_SESSION['id'];
+	$FollowUser = $_SESSION['visit'];
+	
+	$sql = "SELECT `followFollow`, `followFollower` FROM `follow` WHERE `followFollow` = '$User' AND `followFollower` = '$FollowUser' ";
+	
+	$return = mysqli_num_rows(mysqli_query($conn, $sql));
+	
+	mysqli_close($conn);
+	
+	return $return;
 }
 ?>

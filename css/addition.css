@@ -8,3 +8,33 @@
 	z-index:100;
 	margin:0 300px;
 }
+
+#WrongLogin {
+	padding:5px; 
+	border:#600 solid 1px; 
+	background:#f66; 
+	position:fixed; 
+	color:#600; 
+	top:20px; 
+	z-index:100;
+	margin:0 300px;
+}
+
+#followButton {
+	border:solid #999;
+	border-width:0px 2px;
+	border-radius:10px;
+	padding:5px 20px;
+	background:#eee;
+	float:left;
+	margin-left:20px;
+	margin-top:-20px;
+	margin-bottom:5px;
+	transition:background 0.2s;
+	transition:border 0.2s;
+}
+
+#followButton:hover {
+	background:#fff;
+	border-color:#666;
+}

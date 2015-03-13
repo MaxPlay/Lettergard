@@ -78,7 +78,7 @@
 					<div class="user_info">
 					<?php 
 						
-						$filename = $_SESSION['id'] . $_SESSION['name'];
+						$filename = getHash($_SESSION['id']);
 						
 						$files = glob("img/Avatars/$filename.*"); // Will find all files regardless of extension
 						
@@ -235,7 +235,7 @@
 					<div class="settingsElement">
 						<?php
 						
-						$filename = $_SESSION['id'] . $_SESSION['name'];
+						$filename = getHash($_SESSION['id']);
 						
 						$files = glob("img/Avatars/$filename.*"); // Will find all files regardless of extension
 						

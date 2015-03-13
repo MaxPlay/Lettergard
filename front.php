@@ -11,6 +11,7 @@
 		<title>lettergard</title>
 		<link rel="stylesheet" type="text/css" href="css/base_green.css">
 		<link rel="stylesheet" type="text/css" href="css/front.css">
+		<link rel="stylesheet" type="text/css" href="css/addition.css">
 		<link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
 		<script src="js/angular.min.js"></script>
 		<script src="js/jquery-1.11.2.min.js"></script>
@@ -50,5 +51,14 @@
 				<a href="">AGB</a> | <a href="">Kontakt</a> | <a href="">Impressum</a>
 			</div>
 		</div>
+		<?php
+		if(isset($_GET['error']))
+			if($_GET['error'] == 1)
+				echo "<div id=\"WrongLogin\" style=\"display:none;\">Die E-Mail oder das Passwort war falsch.</div>\n";
+			else
+				echo "<div id=\"WrongLogin\" style=\"display:none;\">Dein Account konnte nicht erstellt werden, das tut uns leid.</div>\n";
+		if(isset($_GET['login']))
+			echo "<div id=\"WrongLogin\" style=\"display:none;\">Du bist nicht eingeloggt.</div>\n";
+		?>
 	</body>
 </html>

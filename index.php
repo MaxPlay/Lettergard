@@ -5,7 +5,12 @@
 	
 	if(!isset($_SESSION['id']))
 		header('Location:front.php?login=0');
-?>
+	
+	if(!isset($_GET['User']))
+		$_SESSION['visit'] = $_SESSION['id'];
+	else
+		$_SESSION['visit'] = $_GET['User'];
+	?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -64,7 +69,7 @@ print "</script>";
 					<div class="user_info">
 					<?php 
 						
-						$filename = $_SESSION['id'] . $_SESSION['name'];
+						$filename = getHash($_SESSION['visit']);
 						
 						$files = glob("img/Avatars/$filename.*"); // Will find all files regardless of extension
 						
@@ -73,7 +78,7 @@ print "</script>";
 						else
 						{ echo "<img src=\"img/Avatars/default.png\" class=\"user_img\" height=\"90\" width=\"90\"> \n"; }
 					?>
-						<div class="username"><?php echo getNickname($_SESSION['id'])?></div>
+						<div class="username"><?php echo getNickname($_SESSION['visit'])?></div>
 					</div>
 				
 					<form id="postForm" method="post">
@@ -82,6 +87,8 @@ print "</script>";
 						<div class="post_length" id="postLengthValueSide">1000</div>
 					</form>
 				</div>
+				<?php if($_SESSION['visit'] == $_SESSION['id']) {
+					?>
 				<div class="content">
 					<div class="contentelement">
 						<div class="elementcontent">
@@ -102,6 +109,41 @@ print "</script>";
 						<div class="elementheader">&nbsp;Anzahl deiner Posts</div>
 					</div>
 				</div>
+				<?php
+				}
+				else
+				{
+					?>
+					<div id="followButton"><?php if(folgstDu()==1) echo getNickname($_SESSION['visit'])."&nbsp;entfolgen"; else echo getNickname($_SESSION['visit'])."&nbsp;folgen";?></div>
+					<?php if(folgtDir() == 1) {
+						echo getNickname($_SESSION['visit'])."&nbsp;folgt Dir.";
+					}?>
+				<div class="content">
+					<div class="contentelement">
+						<div class="elementcontent">
+							<div class="FollowerCount"></div>
+						</div>
+						<div class="elementheader">&nbsp;Leute denen <?php echo getNickname($_SESSION['visit']); ?> folgt</div>
+					</div>
+					<div class="contentelement">
+						<div class="elementcontent">
+							<div class="FollowedCount"></div>
+						</div>
+						<div class="elementheader">&nbsp;Leuten denen <?php echo getNickname($_SESSION['visit']); ?> folgt</div>
+					</div>
+					<div class="contentelement">
+						<div class="elementcontent">
+							<div class="PostCount"></div>
+						</div>
+						<div class="elementheader">&nbsp;Anzahl von <?php
+							if(substr(getNickname($_SESSION['visit']), -1) == 'x' || substr(getNickname($_SESSION['visit']), -1) == 's')
+								echo getNickname($_SESSION['visit'])."'";
+							else
+								echo getNickname($_SESSION['visit'])."s";
+						?> Posts</div>
+					</div>
+				</div>
+				<?php }?>
 				<footer>
 				<a href="">AGB</a> | <a href="">Kontakt</a> | <a href="">Impressum</a>
 				</footer>
