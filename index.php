@@ -129,7 +129,7 @@ print "</script>";
 						<div class="elementcontent">
 							<div class="FollowedCount"></div>
 						</div>
-						<div class="elementheader">&nbsp;Leuten denen <?php echo getNickname($_SESSION['visit']); ?> folgt</div>
+						<div class="elementheader">&nbsp;Leuten die <?php echo getNickname($_SESSION['visit']); ?> folgen</div>
 					</div>
 					<div class="contentelement">
 						<div class="elementcontent">
