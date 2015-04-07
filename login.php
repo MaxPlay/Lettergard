@@ -9,14 +9,14 @@
 	$password = $_POST["Password"];
 	
 	
-	$db_check_user = "SELECT userMail, userPassword FROM user WHERE userMail LIKE '$usermail' LIMIT 1";
+	$db_check_user = "SELECT userMail, userPassword, userName FROM user WHERE userMail LIKE '$usermail' OR userName LIKE '$usermail' LIMIT 1";
 	$db_check_user_output = mysqli_query($conn, $db_check_user);
 	$db_check_user_output_query = mysqli_fetch_object($db_check_user_output);
 	
 	if (validate_password($password, $db_check_user_output_query->userPassword))
 		{
 			
-	$db_check_user = "SELECT * FROM user WHERE userMail LIKE '$usermail' LIMIT 1";
+	$db_check_user = "SELECT * FROM user WHERE userMail LIKE '$usermail' OR userName LIKE '$usermail' LIMIT 1";
 	$db_check_user_output = mysqli_query($conn, $db_check_user);
 	$db_check_user_output_query = mysqli_fetch_object($db_check_user_output);
 	

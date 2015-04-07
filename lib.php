@@ -8,6 +8,7 @@
     function doLog($text)
     {
     // open log file
+	$text = $text . "\n";
     $filename = "upload.log";
     $fh = fopen($filename, "a") or die("Could not open log file.");
     fwrite($fh, date("d-m-Y, H:i")." - $text\n") or die("Could not write file!");
