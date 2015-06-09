@@ -3,24 +3,22 @@
 	session_start();
 
 include 'connect.php';
+include 'userApi.php';
 
-	$_SESSION['id'];
+	$filename = getHash($_SESSION['id']);
 		
 	$sql = "DELETE FROM `lettergard`.`user` WHERE `user`.`userID` = '".$_SESSION['id']."' LIMIT 1;";
 		mysqli_query($conn, $sql);
-	$sql = "DELETE FROM `lettergard`.`follow` WHERE `user`.`followFollow` = '".$_SESSION['id']."' OR `user`.`followFollower` = '".$_SESSION['id']."'  ;";
+	$sql = "DELETE FROM `lettergard`.`follow` WHERE `follow`.`followUser` = '".$_SESSION['id']."' OR `user`.`followFollower` = '".$_SESSION['id']."'  ;";
 		mysqli_query($conn, $sql);
-	$sql = "DELETE FROM `lettergard`.`fav` WHERE `user`.`favUser` = '".$_SESSION['id']."';";
+	$sql = "DELETE FROM `lettergard`.`fav` WHERE `fav`.`favUser` = '".$_SESSION['id']."';";
 		mysqli_query($conn, $sql);
-	$sql = "DELETE FROM `lettergard`.`posts` WHERE `user`.`postUser` = '".$_SESSION['id']."';";
+	$sql = "DELETE FROM `lettergard`.`posts` WHERE `posts`.`postUser` = '".$_SESSION['id']."';";
 		mysqli_query($conn, $sql);
-	$sql = "DELETE FROM `lettergard`.`reblog` WHERE `user`.`reblogUser` = '".$_SESSION['id']."';";
+	$sql = "DELETE FROM `lettergard`.`reblog` WHERE `reblog`.`reblogUser` = '".$_SESSION['id']."';";
 		mysqli_query($conn, $sql);
-	$sql = "DELETE FROM `lettergard`.`settings` WHERE `user`.`settingsUser` = '".$_SESSION['id']."';";
+	$sql = "DELETE FROM `lettergard`.`settings` WHERE `settings`.`settingsUser` = '".$_SESSION['id']."';";
 		mysqli_query($conn, $sql);
-	
-	
-	$filename = $_SESSION['id'] . $_SESSION['name'];
 						
 	$files = glob("img/Avatars/$filename.*"); // Will find all files regardless of extension
 						

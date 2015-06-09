@@ -147,4 +147,27 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	
+	$("#SUCCESS").delay(5000).fadeOut();
+		
+	$("#SUCCESS").click(function(){
+		$(this).fadeOut();
+	});
+	
+	$("#ERROR").delay(5000).fadeOut();
+		
+	$("#ERROR").click(function(){
+		$(this).fadeOut();
+	});
+	
+	loadMessages();
 });
+
+function loadMessages(startTime, endTime) {
+	$.ajax({url: "getPosts.php?start= " + startTime + "&end=" + endTime, success: function(result){
+        $(".timelineend").remove();
+        $(".appendable").append(result);
+		$(".appendable").append("<div class=\"timelineelement timelineend\"><div class=\"end\">Nothing more to load.</div></div>");
+    }});
+}

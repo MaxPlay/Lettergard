@@ -9,7 +9,7 @@
 function getFollowerCount($id) {
 	include 'connect.php';
 	
-	$sql = "SELECT * FROM `follow` WHERE `followFollow` = '$id'";
+	$sql = "SELECT * FROM `follow` WHERE `followUser` = '$id'";
 	
 	$ret = mysqli_num_rows(mysqli_query($conn, $sql));
 	
@@ -253,7 +253,7 @@ function folgstDu() {
 	$User = $_SESSION['id'];
 	$FollowUser = $_SESSION['visit'];
 	
-	$sql = "SELECT `followFollow`, `followFollower` FROM `follow` WHERE `followFollow` = '$FollowUser' AND `followFollower` = '$User' ";
+	$sql = "SELECT `followUser`, `followFollower` FROM `follow` WHERE `followUser` = '$FollowUser' AND `followFollower` = '$User' ";
 	
 	$return = mysqli_num_rows(mysqli_query($conn, $sql));
 	
@@ -266,12 +266,39 @@ function folgtDir() {
 	$User = $_SESSION['id'];
 	$FollowUser = $_SESSION['visit'];
 	
-	$sql = "SELECT `followFollow`, `followFollower` FROM `follow` WHERE `followFollow` = '$User' AND `followFollower` = '$FollowUser' ";
+	$sql = "SELECT `followUser`, `followFollower` FROM `follow` WHERE `followUser` = '$User' AND `followFollower` = '$FollowUser' ";
 	
 	$return = mysqli_num_rows(mysqli_query($conn, $sql));
 	
 	mysqli_close($conn);
 	
 	return $return;
+}
+
+
+/**
+ * Gets the Database ID for the User
+ * $UserName = The UserName
+ * return = The UserID
+ **/
+function getUserIDbyName($UserName) {
+	include 'connect.php';
+	
+	$sql = "SELECT userID, userName FROM user WHERE userName LIKE '$UserName'";
+	
+	$return = mysqli_query($conn, $sql);
+	
+	
+	if(!is_bool($return)) {
+	$return = mysqli_fetch_object($return);
+	
+	mysqli_close($conn);
+	if(is_object($return))
+		return $return->userID;
+	}
+	else
+		mysqli_close($conn);
+	
+	return "";
 }
 ?>

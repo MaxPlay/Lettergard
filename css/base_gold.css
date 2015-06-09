@@ -366,7 +366,7 @@ nav footer a:hover {
 	border-left:1px solid #999999;
 	border-right:1px solid #999999;
 	padding-top:10px;
-	height:100%;
+	min-height:100%;
 }
 
 .timelineelement {

@@ -249,6 +249,14 @@
 							<label for="file">Filename:</label>
 							<input type="file" name="file" id="file"><br>
 							<input type="submit" name="submit" value="Upload" class="button">
+							<?php
+							if (count($files) == 1)
+							{
+							?>
+							<input type="submit" name="deleteImg" value="Bild l&ouml;schen" class="button">
+							<?php
+							}
+							?>
 						</form>
 					</div>
 					<div class="settingsElement">
@@ -297,5 +305,27 @@
 			</div>
 		</div>
 		<div id="MailUpdated" style="display:none;">Mail geupdated.</div>
+		<?php
+		if(isset($_GET['SUCCESS']))
+		{
+			if($_GET['SUCCESS'] == 1)
+			{
+			echo "<div id=\"SUCCESS\">Profilbild erfolgreich geupdated.</div>";
+			}
+			if($_GET['SUCCESS'] == 2)
+			{
+			echo "<div id=\"SUCCESS\">Profilbild erfolgreich gel&ouml;scht.</div>";
+			}
+		}
+		
+		if(isset($_GET['EXISTS']))
+		{
+		echo "<div id=\"ERROR\">Das ist bereits dein Profilbild.</div>";
+		}
+		if(isset($_GET['Invalid']))
+		{
+		echo "<div id=\"ERROR\">Bild konnte nicht hochgeladen werden.</div>";
+		}
+		?>
 	</body>
 </html>

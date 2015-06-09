@@ -9,12 +9,35 @@
 	border-radius:10px;
 	min-height:50px;
 }
+
 #MailUpdated {
 	padding:5px; 
 	border:#060 solid 1px; 
 	background:#6f6; 
 	position:fixed; 
 	color:#060; 
+	top:20px; 
+	z-index:100;
+	margin:0 300px;
+}
+
+#SUCCESS {
+	padding:5px; 
+	border:#060 solid 1px; 
+	background:#6f6; 
+	position:fixed; 
+	color:#060; 
+	top:20px; 
+	z-index:100;
+	margin:0 300px;
+}
+
+#ERROR {
+	padding:5px; 
+	border:#600 solid 1px; 
+	background:#f66; 
+	position:fixed; 
+	color:#600; 
 	top:20px; 
 	z-index:100;
 	margin:0 300px;

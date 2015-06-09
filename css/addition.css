@@ -38,3 +38,88 @@
 	background:#fff;
 	border-color:#666;
 }
+
+.Error404 {
+	margin:200px 20px;
+}
+
+.Error404 a:link {
+	color:#333;
+	text-decoration:none;
+	transition:color 0.2s;
+}
+
+.Error404 a:visited {
+	color:#333;
+}
+
+.Error404 a:hover {
+	color:#999;
+}
+
+.PostHeader:link {
+	position:relative;
+	height:16px;
+	padding:1px 5px;
+}
+
+.PostHeader:visited {
+	position:relative;
+	height:16px;
+	padding:1px 5px;
+}
+
+.PostHeader img {
+	float:left;
+}
+
+.PostHeader .PostAuthor {
+	float:left;
+	font-weight:bold;
+	margin:0px 4px;
+	color:#000;
+	
+}
+
+.PostHeader .PostAdress {
+	float:left;
+	font-size:12px;
+	margin:6px auto 0px 2px;
+	color:#ccc;
+	font-family:"Lucida Console";
+}
+
+
+.PostHeader:hover .PostAuthor {
+	float:left;
+	font-weight:bold;
+	margin:0px 4px;
+	color:#000;
+	text-decoration:underline;
+	
+}
+
+.PostHeader:hover  .PostAdress {
+	float:left;
+	font-size:12px;
+	margin:6px auto 0px 2px;
+	color:#ccc;
+	font-family:"Lucida Console";
+	text-decoration:underline;
+}
+
+.PostHeader  .PostTime {
+	float:right;
+	font-size:10px;
+	margin:6px 3px 0px 2px;
+	color:#ccc;
+	text-decoration:none;
+}
+
+.PostContent {
+	clear:both;
+	position:relative;
+	padding:1px 5px;
+	text-decoration:none;
+	max-width:100%;
+}

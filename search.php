@@ -10,7 +10,7 @@
 		$_SESSION['visit'] = $_SESSION['id'];
 	else
 	{
-	if(is_numeric($_GET['User']))
+	if(!is_numeric($_GET['User']))
 		$_SESSION['visit'] = $_GET['User'];
 		else {
 		$_SESSION['visit'] = $_SESSION['id'];
@@ -155,14 +155,18 @@ print "</script>";
 				<a href="">AGB</a> | <a href="">Kontakt</a> | <a href="">Impressum</a>
 				</footer>
 			</nav>
-			<div class="timeline appendable">
-				<!-- TEMPLATE -->
-				<!--<div class="timelineelement">
-					<a class="PostHeader"><img src="img/Avatars/$filename" height="20"><div class="PostAuthor">Header</div><div class="PostAdress">@Header</div></a>
-					<div class="PostContent">Content</div>
-				</div>-->
+			<div class="timeline" ng-app="" ng-controller="searchController">
+				<div class="timelineelement" ng-repeat="x in posts">
+					{{x.inner}}
+				</div>
 				<div class="timelineelement timelineend"><div class="end">Nothing more to load.</div></div>
 			</div>
+			<script>
+				function searchController($scope,$http) {
+					$http.get("getPosts.php?")
+					.success(function(response) {$scope.posts = response;});
+				}
+			</script>
 		</div>
 		<div id="SentError" style="display:none;">Nachricht konnte nicht versendet werden.</div>
 		<div id="Validated" style="display:none;">Du hast deine E-Mailadresse best&auml;tigt.</div>

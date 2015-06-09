@@ -3,6 +3,19 @@ session_start();
 include 'lib.php';
 include 'userApi.php';
 
+if(!isset($_POST['submit']))
+{
+	$filename = getHash($_SESSION['id']);
+	$files = glob("img/Avatars/$filename.*"); // Will find all files regardless of extension
+	
+	if (count($files) == 1)
+	{
+		unlink($files[0]);
+	}
+	
+	header("location:settings.php?id=2&SUCCESS=2");
+}
+
 $allowedExts = array("gif", "jpeg", "jpg", "png");
 $temp = explode(".", $_FILES["file"]["name"]);
 $extension = strtolower(end($temp));
