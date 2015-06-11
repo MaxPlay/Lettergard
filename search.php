@@ -52,9 +52,9 @@ print "</script>";
 				<div style="float:left;width:50px;">&nbsp;</div>
 				<a class="title" href="index.php">lettergard</a>
 				<div style="float:left;width:100px;">&nbsp;</div>
-				<form class="searcharea">
-					<input type="textbox" class="searchbar">
-					<button class="searchbutton"><img src="img/search.png"></button>
+				<form class="searcharea" method="get" action="search.php">
+					<input type="textbox" class="searchbar" name="search" value="<?php echo $_GET['search'];?>">
+					<button class="searchbutton" type="submit"><img src="img/search.png"></button>
 				</form>
 				<div style="float:left;width:100px;">&nbsp;</div>
 				<div class="menu"><img src="img/menu.png">
@@ -89,13 +89,11 @@ print "</script>";
 					</div>
 				
 					<form id="postForm" method="post">
-						<div name="Post" id="postTextAreaSide" role="textbox" class="post_text" maxlength="1000" contenteditable="true" aria-multiline="true" spellcheck="true" dir="ltr" aria-autocomplete="list" aria-expanded="false" OnKeyPress="updateBioLength()"></div>
+						<div name="Post" id="postTextAreaSide" role="textbox" class="post_text" maxlength="1000" contenteditable="true" aria-multiline="true" spellcheck="true" dir="ltr" aria-autocomplete="list" aria-expanded="false" OnKeyPress="updateLength()"></div>
 						<button class="post_button" id="postButtonSide">Post</button>
 						<div class="post_length" id="postLengthValueSide">1000</div>
 					</form>
 				</div>
-				<?php if($_SESSION['visit'] == $_SESSION['id']) {
-					?>
 				<div class="content">
 					<div class="contentelement">
 						<div class="elementcontent">
@@ -116,59 +114,17 @@ print "</script>";
 						<div class="elementheader">&nbsp;Anzahl deiner Posts</div>
 					</div>
 				</div>
-				<?php
-				}
-				else
-				{
-					?>
-					<div id="followButton"><?php if(folgstDu()==1) echo getNickname($_SESSION['visit'])."&nbsp;entfolgen"; else echo getNickname($_SESSION['visit'])."&nbsp;folgen";?></div>
-					<?php if(folgtDir() == 1) {
-						echo getNickname($_SESSION['visit'])."&nbsp;folgt Dir.";
-					}?>
-				<div class="content">
-					<div class="contentelement">
-						<div class="elementcontent">
-							<div class="FollowerCount"></div>
-						</div>
-						<div class="elementheader">&nbsp;Leute denen <?php echo getNickname($_SESSION['visit']); ?> folgt</div>
-					</div>
-					<div class="contentelement">
-						<div class="elementcontent">
-							<div class="FollowedCount"></div>
-						</div>
-						<div class="elementheader">&nbsp;Leuten die <?php echo getNickname($_SESSION['visit']); ?> folgen</div>
-					</div>
-					<div class="contentelement">
-						<div class="elementcontent">
-							<div class="PostCount"></div>
-						</div>
-						<div class="elementheader">&nbsp;Anzahl von <?php
-							if(substr(getNickname($_SESSION['visit']), -1) == 'x' || substr(getNickname($_SESSION['visit']), -1) == 's')
-								echo getNickname($_SESSION['visit'])."'";
-							else
-								echo getNickname($_SESSION['visit'])."s";
-						?> Posts</div>
-					</div>
-				</div>
-				<?php }?>
 				<footer>
 				<a href="">AGB</a> | <a href="">Kontakt</a> | <a href="">Impressum</a>
 				</footer>
 			</nav>
-			<div class="timeline" ng-app="" ng-controller="searchController">
-				<div class="timelineelement" ng-repeat="x in posts">
-					{{x.inner}}
-				</div>
-				<div class="timelineelement timelineend"><div class="end">Nothing more to load.</div></div>
+			<div class="timeline" id="searchOutput">
+				
+				<!--<div class="timelineelement timelineend"><div class="end">Nothing more to load.</div></div>-->
 			</div>
-			<script>
-				function searchController($scope,$http) {
-					$http.get("getPosts.php?")
-					.success(function(response) {$scope.posts = response;});
-				}
-			</script>
 		</div>
 		<div id="SentError" style="display:none;">Nachricht konnte nicht versendet werden.</div>
 		<div id="Validated" style="display:none;">Du hast deine E-Mailadresse best&auml;tigt.</div>
+		<?php echo "<script>searchResults(\"" . $_GET['search'] . "\")</script>";?>
 	</body>
 </html>

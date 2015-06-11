@@ -10,12 +10,10 @@
 		$_SESSION['visit'] = $_SESSION['id'];
 	else
 	{
-	if(is_numeric($_GET['User']))
-		$_SESSION['visit'] = $_GET['User'];
-		else {
-		$_SESSION['visit'] = $_SESSION['id'];
+	if(DoesUserExist($_GET['User']))
+		$_SESSION['visit'] = GetUserIDbyName($_GET['User']);
+	else
 		header('Location:noUser.php');
-		}
 	}
 	?>
 <!DOCTYPE html>
@@ -52,9 +50,9 @@ print "</script>";
 				<div style="float:left;width:50px;">&nbsp;</div>
 				<a class="title" href="index.php">lettergard</a>
 				<div style="float:left;width:100px;">&nbsp;</div>
-				<form class="searcharea">
-					<input type="textbox" class="searchbar">
-					<button class="searchbutton"><img src="img/search.png"></button>
+				<form class="searcharea" method="get" action="search.php">
+					<input type="textbox" class="searchbar" name="search">
+					<button class="searchbutton" type="submit"><img src="img/search.png"></button>
 				</form>
 				<div style="float:left;width:100px;">&nbsp;</div>
 				<div class="menu"><img src="img/menu.png">
@@ -89,7 +87,7 @@ print "</script>";
 					</div>
 				
 					<form id="postForm" method="post">
-						<div name="Post" id="postTextAreaSide" role="textbox" class="post_text" maxlength="1000" contenteditable="true" aria-multiline="true" spellcheck="true" dir="ltr" aria-autocomplete="list" aria-expanded="false" OnKeyPress="updateBioLength()"></div>
+						<div name="Post" id="postTextAreaSide" role="textbox" class="post_text" maxlength="1000" contenteditable="true" aria-multiline="true" spellcheck="true" dir="ltr" aria-autocomplete="list" aria-expanded="false" OnKeyPress="updateLength()"></div>
 						<button class="post_button" id="postButtonSide">Post</button>
 						<div class="post_length" id="postLengthValueSide">1000</div>
 					</form>
@@ -130,13 +128,13 @@ print "</script>";
 						<div class="elementcontent">
 							<div class="FollowerCount"></div>
 						</div>
-						<div class="elementheader">&nbsp;Leute denen <?php echo getNickname($_SESSION['visit']); ?> folgt</div>
+						<div class="elementheader">&nbsp;Leute die <?php echo getNickname($_SESSION['visit']); ?> folgen</div>
 					</div>
 					<div class="contentelement">
 						<div class="elementcontent">
 							<div class="FollowedCount"></div>
 						</div>
-						<div class="elementheader">&nbsp;Leuten die <?php echo getNickname($_SESSION['visit']); ?> folgen</div>
+						<div class="elementheader">&nbsp;Leuten denen <?php echo getNickname($_SESSION['visit']); ?> folgt</div>
 					</div>
 					<div class="contentelement">
 						<div class="elementcontent">
@@ -166,5 +164,6 @@ print "</script>";
 		</div>
 		<div id="SentError" style="display:none;">Nachricht konnte nicht versendet werden.</div>
 		<div id="Validated" style="display:none;">Du hast deine E-Mailadresse best&auml;tigt.</div>
+		<?php echo "<script>loadMessages();</script>";?>
 	</body>
 </html>

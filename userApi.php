@@ -301,4 +301,16 @@ function getUserIDbyName($UserName) {
 	
 	return "";
 }
+
+function GetHighestPostID() {
+	include 'connect.php';
+	
+	$sql = "SELECT MAX(`postID`) AS `postID` FROM `posts`";
+	
+	$return = mysqli_fetch_object(mysqli_query($conn, $sql));
+	
+	mysqli_close($conn);
+	
+	return $return->postID;
+}
 ?>

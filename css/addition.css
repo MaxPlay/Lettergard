@@ -123,3 +123,48 @@
 	text-decoration:none;
 	max-width:100%;
 }
+
+.PostContent a:link {
+	color:#666;
+	text-decoration:none;
+}
+
+.PostContent a:visited {
+	color:#666;
+	text-decoration:none;
+}
+
+.PostContent a:hover {
+	color:#000;
+	text-decoration:underline;
+}
+
+.searchresult:link {
+	float:left;
+	height:16px;
+	padding:1px 5px;
+	text-decoration:none;
+	color:#000;
+}
+
+.searchresult:visited {
+	color:#000;
+}
+
+.searchresult:hover {
+	text-decoration:underline;
+	color:#000;
+}
+.timelineelement .end {
+	text-align:center;
+	width:inherit;
+	padding-top:18px;
+	color:#000;
+	text-decoration:none;
+	transition:color 0.3s;
+}
+
+.timelineelement .end:hover {
+	color:#333333;
+	text-decoration:underline;
+}

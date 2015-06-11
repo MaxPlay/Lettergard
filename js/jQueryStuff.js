@@ -54,6 +54,7 @@ $(document).ready(function() {
 			console.log(data);
 			document.getElementById("postTextAreaSide").innerHTML = "";
 			document.getElementById("postLengthValueSide").innerHTML = "1000";
+			location.reload(); 
 			},
 		error:function(data){
 			$("#SentError").fadeIn("fast").delay(2000).fadeOut();
@@ -148,7 +149,6 @@ $(document).ready(function() {
 		});
 	});
 	
-	
 	$("#SUCCESS").delay(5000).fadeOut();
 		
 	$("#SUCCESS").click(function(){
@@ -160,14 +160,41 @@ $(document).ready(function() {
 	$("#ERROR").click(function(){
 		$(this).fadeOut();
 	});
-	
-	loadMessages();
+
+	$(".appendable").on("click", ".end", function() {
+		if($(".end").attr("id") != "NothingMore")
+		{
+			var date = $(".timelineend").prev().attr("id");
+			loadMessages(date);
+		}
+	});
 });
 
-function loadMessages(startTime, endTime) {
-	$.ajax({url: "getPosts.php?start= " + startTime + "&end=" + endTime, success: function(result){
+$( document ).ajaxComplete(function( event,request, settings ) {
+	var url = window.location.pathname;
+	var filename = url.substring(url.lastIndexOf('/')+1);
+	if(filename == "search.php") { $("#searchOutput").append("<div class=\"timelineelement timelineend\"><div class=\"end\" id=\"NothingMore\">Du hast das Ende der Timeline erreicht.</div></div>"); }
+});
+
+function loadMessages(startTime) {
+	$.ajax({url: "getPosts.php?start=" + startTime, success: function(result){
         $(".timelineend").remove();
         $(".appendable").append(result);
-		$(".appendable").append("<div class=\"timelineelement timelineend\"><div class=\"end\">Nothing more to load.</div></div>");
-    }});
+		
+		if(String(result).length>5)
+			$(".appendable").append("<div class=\"timelineelement timelineend\"><div class=\"end\">Klicken um &auml;ltere Posts zu laden.</div></div>");
+		else
+			$(".appendable").append("<div class=\"timelineelement timelineend\"><div class=\"end\" id=\"NothingMore\">Du hast das Ende der Timeline erreicht.</div></div>");
+	}});
+}
+
+function searchResults(searchvalue) {
+	$.ajax({url: "getSearchInfo.php?type=user&search=" + searchvalue, global: false, success: function(result){
+		$("#searchOutput").append("<div class=\"timelineelement\">Personen</div>");
+        $("#searchOutput").append(result);
+		}});
+	$.ajax({url: "getSearchInfo.php?type=post&search=" + searchvalue, success: function(result){
+		$("#searchOutput").append("<div class=\"timelineelement\">Posts</div>");
+        $("#searchOutput").append(result);
+		}});
 }

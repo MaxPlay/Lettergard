@@ -381,12 +381,6 @@ nav footer a:hover {
 	border-bottom:1px solid #ddddff;
 }
 
-.timelineelement .end {
-	text-align:center;
-	width:inherit;
-	padding-top:18px;
-}
-
 .timeline .content {
 	margin:3px;
 }

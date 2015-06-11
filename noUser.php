@@ -43,9 +43,9 @@ print "</script>";
 				<div style="float:left;width:50px;">&nbsp;</div>
 				<a class="title" href="index.php">lettergard</a>
 				<div style="float:left;width:100px;">&nbsp;</div>
-				<form class="searcharea">
-					<input type="textbox" class="searchbar">
-					<button class="searchbutton"><img src="img/search.png"></button>
+				<form class="searcharea" method="get" action="search.php">
+					<input type="textbox" class="searchbar" name="search">
+					<button class="searchbutton" type="submit"><img src="img/search.png"></button>
 				</form>
 				<div style="float:left;width:100px;">&nbsp;</div>
 				<div class="menu"><img src="img/menu.png">

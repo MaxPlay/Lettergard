@@ -1,6 +1,7 @@
 <?php
 
 include 'lib.php';
+include 'userApi.php';
 
-echo encodePost("sdfasdfa@sdfsdafsdf #des asdkwe");
+echo encodePost("Lol, #Hashtag ! @yannik <br>");
 ?>
