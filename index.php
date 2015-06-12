@@ -99,13 +99,13 @@ print "</script>";
 						<div class="elementcontent">
 							<div class="FollowerCount"></div>
 						</div>
-						<div class="elementheader">&nbsp;Follower</div>
+						<div class="elementheader"><a href="showFollower.php">&nbsp;Follower</a></div>
 					</div>
 					<div class="contentelement">
 						<div class="elementcontent">
 							<div class="FollowedCount"></div>
 						</div>
-						<div class="elementheader">&nbsp;Leuten denen Du folgst</div>
+						<div class="elementheader"><a href="showFollowings.php">&nbsp;Leuten denen Du folgst</a></div>
 					</div>
 					<div class="contentelement">
 						<div class="elementcontent">
@@ -121,7 +121,7 @@ print "</script>";
 					?>
 					<div id="followButton"><?php if(folgstDu()==1) echo getNickname($_SESSION['visit'])."&nbsp;entfolgen"; else echo getNickname($_SESSION['visit'])."&nbsp;folgen";?></div>
 					<?php if(folgtDir() == 1) {
-						echo getNickname($_SESSION['visit'])."&nbsp;folgt Dir.";
+						echo getNickname("<div class=\"followsYou\">".$_SESSION['visit'])."&nbsp;folgt Dir.</div>";
 					}?>
 				<div class="content">
 					<div class="contentelement">
