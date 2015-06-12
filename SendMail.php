@@ -15,7 +15,7 @@ if(isset($_SESSION['id'])) {
 	
 	$name = $result->userName;
 	
-	$link = "https://localhost/Projectarbeit_Twitterklon/index.php?val=" . $result->userHash;
+	$link = "http://lettergard.maxstuerzl.de/index.php?val=" . $result->userHash;
 print "test";
 	
 $mailtext = "<html>

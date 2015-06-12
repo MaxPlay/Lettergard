@@ -80,7 +80,23 @@ $(document).ready(function() {
 	e.preventDefault(); //=== To Avoid Page Refresh and Fire the Event "Click"===
 	});
 	
-	//This code is for updating the bio
+	//This code is for updating the info
+	$('#infoForm').on('submit',function(e) {
+		
+		$.ajax({
+		url:'updateInfo.php',
+		data: "Nickname=" + document.getElementById("Nickname").innerHTML + "&Website=" + document.getElementById("Website").innerHTML,
+		type:'POST',
+		success:function(data){
+			console.log(data);
+			},
+		error:function(data){
+			}
+		});
+	e.preventDefault(); //=== To Avoid Page Refresh and Fire the Event "Click"===
+	});
+	
+	//This code is for updating the mail
 	$('#MailPost').on('submit',function(e) {
 
 		$.ajax({
@@ -100,7 +116,7 @@ $(document).ready(function() {
 	$("#resentMail").click(function(){
 		$("#resentMail").fadeOut(200);
 		$("#mailSent").delay(200).fadeIn(200);
-	})
+	});
 	
 	$('#UserName').keyup(function() {
     var username = document.getElementById("UserName").value;
@@ -168,12 +184,6 @@ $(document).ready(function() {
 			loadMessages(date);
 		}
 	});
-});
-
-$( document ).ajaxComplete(function( event,request, settings ) {
-	var url = window.location.pathname;
-	var filename = url.substring(url.lastIndexOf('/')+1);
-	if(filename == "search.php") { $("#searchOutput").append("<div class=\"timelineelement timelineend\"><div class=\"end\" id=\"NothingMore\">Du hast das Ende der Timeline erreicht.</div></div>"); }
 });
 
 function loadMessages(startTime) {

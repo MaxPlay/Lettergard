@@ -241,7 +241,7 @@ function validate($hash)
 	
 	if($hash == $userHash)
 	{
-	$sql = "UPDATE `lettergard`.`user` SET `userValidated` = '1' WHERE `user`.`userID` = $User;";
+	$sql = "UPDATE `user` SET `userValidated` = '1' WHERE `user`.`userID` = $User;";
 		
 	mysqli_query($conn, $sql);
 	}

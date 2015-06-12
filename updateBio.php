@@ -7,9 +7,10 @@
 	{
 		$id = $_SESSION['id'];
 		$post = $_POST['Post'];
-		$sql = "UPDATE `lettergard`.`user` SET `userBio` = '$post' WHERE `user`.`userID` = $id";
+		$sql = "UPDATE `user` SET `userBio` = '$post' WHERE `user`.`userID` = $id";
 		mysqli_query($conn, $sql);
 	}
 	
 	mysqli_close($conn);
+	header("location:settings.php?id=2");
 ?>

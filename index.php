@@ -1,7 +1,7 @@
 <?php
 	/** Code is poetry **/
 	session_start();
-	include "userApi.php";
+	include_once "userApi.php";
 	
 	if(!isset($_SESSION['id']))
 		header('Location:front.php?login=0');

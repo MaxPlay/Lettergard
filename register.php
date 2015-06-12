@@ -37,6 +37,5 @@ include 'userApi.php';
 		{
 		mysqli_close($conn);
 		header("location:front.php?error=2");
-		
 		}
 ?>

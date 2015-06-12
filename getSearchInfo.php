@@ -2,12 +2,12 @@
 session_start();
 
 include 'connect.php';
-include_once 'UserApi.php';
+include_once 'userApi.php';
 include_once 'lib.php';
 
 if($_GET['type'] == "user")
 {
-	$sql = "SELECT `user`.`userName` AS `Name`, `user`.`userNickname` AS `Nick` FROM `user` WHERE `userName` LIKE '" . str_replace("@","",$_GET['search']) . "' OR `userNickname` LIKE '" . str_replace("@","",$_GET['search']) . "'";
+	$sql = "SELECT `user`.`userName` AS `Name`, `user`.`userNickname` AS `Nick` FROM `user` WHERE `userName` LIKE '%" . str_replace("@","",$_GET['search']) . "%' OR `userNickname` LIKE '%" . str_replace("@","",$_GET['search']) . "%'";
 	
 	$result = mysqli_query($conn, $sql);
 	

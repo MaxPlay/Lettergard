@@ -261,22 +261,21 @@
 					</div>
 					<div class="settingsElement">
 						<b>Deine Infos</b>
-						<form action="" method="post">
+						<form id="infoForm" action="" method="post">
 							<div class="title">Nickname</div>
-							<div name="Nickname" id="bioTextArea" role="textbox" class="textfield" maxlength="1000" contenteditable="true" aria-multiline="true" spellcheck="true" dir="ltr" aria-autocomplete="list" aria-expanded="false"><?php echo getNickname($_SESSION['id']); ?></div>
-
+							<div name="Nickname" id="Nickname" role="textbox" class="textfield" maxlength="1000" contenteditable="true" aria-multiline="true" spellcheck="true" dir="ltr" aria-autocomplete="list" aria-expanded="false"><?php echo getNickname($_SESSION['id']); ?></div>
 							<div class="title">Deine Website</div>
-							<div name="Website" id="bioTextArea" role="textbox" class="textfield" maxlength="1000" contenteditable="true" aria-multiline="true" spellcheck="true" dir="ltr" aria-autocomplete="list" aria-expanded="false"><?php echo getWebsite($_SESSION['id']); ?></div>
+							<div name="Website" id="Website" role="textbox" class="textfield" maxlength="1000" contenteditable="true" aria-multiline="true" spellcheck="true" dir="ltr" aria-autocomplete="list" aria-expanded="false"><?php echo getWebsite($_SESSION['id']); ?></div>
 							
-							<button class="update_button" id="updateButton">Update</button>
+							<button class="update_button" id="updateButton" type="submit">Update</button>
 						</form>
 					</div>
 					<div class="settingsElement">
 						<b>Deine Biografie</b>
-						<form id="bioForm" method="post">
+						<form id="bioForm" action="" method="post">
 							<div name="Post" id="bioTextArea" role="textbox" class="bio_text" maxlength="1000" contenteditable="true" aria-multiline="true" spellcheck="true" dir="ltr" aria-autocomplete="list" aria-expanded="false" OnKeyPress="updateBioLength()"><?php echo getBio($_SESSION['id']); ?></div>
 							<div class="bio_length" id="bioLengthValue"><?php echo 1000-4-strlen(getBio($_SESSION['id'])); ?></div>
-							<button class="bio_button" id="bioButton">Update</button>
+							<button class="bio_button" id="bioButton" type="submit">Update</button>
 					</form>
 					</div>
 					<?php
