@@ -53,7 +53,7 @@ print "</script>";
 				<a class="title" href="index.php">lettergard</a>
 				<div style="float:left;width:100px;">&nbsp;</div>
 				<form class="searcharea" method="get" action="search.php">
-					<input type="textbox" class="searchbar" name="search" value="<?php echo $_GET['search'];?>">
+					<input type="textbox" class="searchbar" name="search" value="<?php echo $_GET['search'];?>" placeholder="lettergard durchsuchen">
 					<button class="searchbutton" type="submit"><img src="img/search.png"></button>
 				</form>
 				<div style="float:left;width:100px;">&nbsp;</div>
