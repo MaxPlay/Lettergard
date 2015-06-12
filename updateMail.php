@@ -10,7 +10,7 @@
 		
 		$post = trim($post);
 		
-		$sql = "UPDATE `lettergard`.`user` SET `userMail` = '$post', `userValidated` = 0 WHERE `user`.`userID` = $id";
+		$sql = "UPDATE `user` SET `userMail` = '$post', `userValidated` = 0 WHERE `user`.`userID` = $id";
 		mysqli_query($conn, $sql);
 	}
 	
