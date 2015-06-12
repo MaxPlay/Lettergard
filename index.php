@@ -121,7 +121,7 @@ print "</script>";
 					?>
 					<div id="followButton"><?php if(folgstDu()==1) echo getNickname($_SESSION['visit'])."&nbsp;entfolgen"; else echo getNickname($_SESSION['visit'])."&nbsp;folgen";?></div>
 					<?php if(folgtDir() == 1) {
-						echo getNickname("<div class=\"followsYou\">".$_SESSION['visit'])."&nbsp;folgt Dir.</div>";
+						echo "<div class=\"followsYou\">".getNickname($_SESSION['visit'])."&nbsp;folgt Dir.</div>";
 					}?>
 				<div class="content">
 					<div class="contentelement">

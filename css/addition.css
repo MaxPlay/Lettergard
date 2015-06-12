@@ -168,3 +168,13 @@
 	color:#333333;
 	text-decoration:underline;
 }
+
+.followsYou {
+	padding:5px 20px;
+	float:right;
+	margin-right:40px;
+	margin-top:-19px;
+	margin-bottom:5px;
+	color:#666;
+	font-size:12px;
+}
