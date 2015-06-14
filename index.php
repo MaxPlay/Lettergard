@@ -99,13 +99,13 @@ print "</script>";
 						<div class="elementcontent">
 							<div class="FollowerCount"></div>
 						</div>
-						<div class="elementheader"><a href="showFollower.php">&nbsp;Follower</a></div>
+						<div class="elementheader">&nbsp;<a href="showFollower.php">Follower</a></div>
 					</div>
 					<div class="contentelement">
 						<div class="elementcontent">
 							<div class="FollowedCount"></div>
 						</div>
-						<div class="elementheader"><a href="showFollowings.php">&nbsp;Leuten denen Du folgst</a></div>
+						<div class="elementheader">&nbsp;<a href="showFollowings.php">Leuten denen Du folgst</a></div>
 					</div>
 					<div class="contentelement">
 						<div class="elementcontent">

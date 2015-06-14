@@ -113,7 +113,7 @@ header .content .title {
 </html>
 ";
 
-$empfaenger = "maxplayyt@gmail.com";//$result->userMail; //Mailadresse
+$empfaenger = $result->userMail; //Mailadresse
 $absender   = "noreply@lettergard.com";
 $betreff    = "E-Mail Verifizierung - lettergard.com";
  

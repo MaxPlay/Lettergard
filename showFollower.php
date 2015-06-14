@@ -128,13 +128,13 @@ print "</script>";
 						<div class="elementcontent">
 							<div class="FollowerCount"></div>
 						</div>
-						<div class="elementheader">&nbsp;Leute die <?php echo getNickname($_SESSION['visit']); ?> folgen</div>
+						<div class="elementheader">&nbsp;<a href="showFollower.php">Follower</a></div>
 					</div>
 					<div class="contentelement">
 						<div class="elementcontent">
 							<div class="FollowedCount"></div>
 						</div>
-						<div class="elementheader">&nbsp;Leuten denen <?php echo getNickname($_SESSION['visit']); ?> folgt</div>
+						<div class="elementheader">&nbsp;<a href="showFollowings.php">Leuten denen Du folgst</a></div>
 					</div>
 					<div class="contentelement">
 						<div class="elementcontent">
