@@ -5,9 +5,16 @@ include 'connect.php';
 include_once 'userApi.php';
 include_once 'lib.php';
 
-if($_GET['type'] == "user")
+$id = $_SESSION['id'];
+if(isset($_GET['start']))
+	$start = $_GET['start'];
+
+	if($start == "undefined")
+	$start = GetHighestFollowID()+1;
+
+if($_GET['type'] == "follower")
 {
-	$sql = "SELECT `user`.`userName` AS `Name`, `user`.`userNickname` AS `Nick` FROM `user` WHERE `userName` LIKE '%" . str_replace("@","",$_GET['search']) . "%' OR `userNickname` LIKE '%" . str_replace("@","",$_GET['search']) . "%'";
+	$sql = "SELECT `user`.`userName` AS `Name`, `user`.`userNickname` AS `Nick`, `follow`.`followID` AS `ID` FROM `user` JOIN `follow` ON `user`.`userID` = `follow`.`followFollower` WHERE `follow`.`followUser` = '$id' AND `follow`.`followID` < $start ORDER BY `followID` LIMIT 15";
 	
 	$result = mysqli_query($conn, $sql);
 	
@@ -24,7 +31,9 @@ if($_GET['type'] == "user")
 						else
 						{ $filename ="img/Avatars/default.png"; }
 	
-	echo "<div class=\"timelineelement\">";
+	echo "<div class=\"timelineelement\" id=\"";
+		echo $obj->ID;
+		echo "\">";
 		echo "<a class=\"searchresult\" href=\"index.php?User=";
 		echo $obj->Name;
 		echo "\"><table><tr><td><img src=\"$filename\" height=\"40\" width=\"40\"></td><th>";
@@ -41,28 +50,15 @@ if($_GET['type'] == "user")
 }
 else
 {
-	$sql = "SELECT
-		`u`.`userName` AS `PostName`,
-		`u`.`userNickname` AS `Nick`,
-		`p`.`postText` AS `Text`,
-		`p`.`postTime` AS `Time`,
-		`p`.`postID` AS `ID`
-		FROM `posts` AS `p`
-		JOIN `user` AS `u` ON `u`.`userID` = `p`.`postUser`
-		WHERE
-		`u`.`userName` LIKE '" . str_replace("@","",$_GET['search']) . "'
-		OR
-		`u`.`userNickname` LIKE '" . $_GET['search'] . "'
-		OR
-		`p`.`postText` LIKE '%" . $_GET['search'] . "%'
-		ORDER BY `ID` DESC";
-
+	$sql = "SELECT `user`.`userName` AS `Name`, `user`.`userNickname` AS `Nick`, `follow`.`followID` AS `ID` FROM `user` JOIN `follow` ON `user`.`userID` = `follow`.`followUser` WHERE `follow`.`followFollower` = '$id' AND `follow`.`followID` < $start ORDER BY `followID` LIMIT 15";
+	
 	$result = mysqli_query($conn, $sql);
 	
 	if(!is_bool($result))
+	
 	while($obj = mysqli_fetch_object($result))
 	{
-	$filename = getHash(getUserIDbyName($obj->PostName));
+	$filename = getHash(getUserIDbyName($obj->Name));
 						
 						$files = glob("img/Avatars/$filename.*"); // Will find all files regardless of extension
 						
@@ -71,22 +67,21 @@ else
 						else
 						{ $filename ="img/Avatars/default.png"; }
 	
-	echo "<div class=\"timelineelement\">";
-		echo "<a class=\"PostHeader\" href=\"index.php?User=";
-		echo $obj->PostName;
-		echo "\"><img src=\"$filename\" height=\"20\" width=\"20\"><div class=\"PostAuthor\">";
+	echo "<div class=\"timelineelement\" id=\"";
+		echo $obj->ID;
+		echo "\">";
+		echo "<a class=\"searchresult\" href=\"index.php?User=";
+		echo $obj->Name;
+		echo "\"><table><tr><td><img src=\"$filename\" height=\"40\" width=\"40\"></td><th>";
 		echo $obj->Nick;
-		echo "</div><div class=\"PostAdress\">@";
-		echo $obj->PostName;
-		echo "</div>";
-		echo "<div class=\"PostTime\">";
-		echo $obj->Time;
-		echo "</div></a>";
-		echo "<div class=\"PostContent\">";
-		echo encodePost($obj->Text);
-		echo "</div>";
+		echo "</th><td>&nbsp;@";
+		echo $obj->Name;
+		echo "</td>";
+		if(getUserIDbyName($obj->Name) == $_SESSION['id'])
+			echo "<td> (Das bist du!)</td>";
+		echo "</tr></table></a>";
 	echo "</div>";
 	}
 	mysqli_close($conn);
 }
-?> 
+?>

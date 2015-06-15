@@ -153,7 +153,7 @@ print "</script>";
 				<a href="">AGB</a> | <a href="">Kontakt</a> | <a href="">Impressum</a>
 				</footer>
 			</nav>
-			<div class="timeline c_showFollower">
+			<div class="timeline c_showFollowings">
 				<!-- TEMPLATE -->
 				<!--<div class="timelineelement">
 					<a class="PostHeader"><img src="img/Avatars/$filename" height="20"><div class="PostAuthor">Header</div><div class="PostAdress">@Header</div></a>
@@ -164,6 +164,6 @@ print "</script>";
 		</div>
 		<div id="SentError" style="display:none;">Nachricht konnte nicht versendet werden.</div>
 		<div id="Validated" style="display:none;">Du hast deine E-Mailadresse best&auml;tigt.</div>
-		<?php echo "<script>loadFollower();</script>";?>
+		<?php echo "<script>loadFollowings();</script>";?>
 	</body>
 </html>

@@ -184,6 +184,22 @@ $(document).ready(function() {
 			loadMessages(date);
 		}
 	});
+
+	$(".c_showFollower").on("click", ".end", function() {
+		if($(".end").attr("id") != "NothingMore")
+		{
+			var date = $(".timelineend").prev().attr("id");
+			loadFollower(date);
+		}
+	});
+	
+	$(".c_showFollowings").on("click", ".end", function() {
+		if($(".end").attr("id") != "NothingMore")
+		{
+			var date = $(".timelineend").prev().attr("id");
+			loadFollowings(date);
+		}
+	});
 });
 
 function loadMessages(startTime) {
@@ -195,6 +211,30 @@ function loadMessages(startTime) {
 			$(".appendable").append("<div class=\"timelineelement timelineend\"><div class=\"end\">Klicken um &auml;ltere Posts zu laden.</div></div>");
 		else
 			$(".appendable").append("<div class=\"timelineelement timelineend\"><div class=\"end\" id=\"NothingMore\">Du hast das Ende der Timeline erreicht.</div></div>");
+	}});
+}
+
+function loadFollower(startTime) {
+	$.ajax({url: "getFollowInfo.php?type=follower&start=" + startTime, success: function(result){
+        $(".timelineend").remove();
+        $(".c_showFollower").append(result);
+		
+		if(String(result).length>5)
+			$(".c_showFollower").append("<div class=\"timelineelement timelineend\"><div class=\"end\">Klicken um weitere Follower zu laden.</div></div>");
+		else
+			$(".c_showFollower").append("<div class=\"timelineelement timelineend\"><div class=\"end\" id=\"NothingMore\">Du hast das Ende der Timeline erreicht.</div></div>");
+	}});
+}
+
+function loadFollowings(startTime) {
+	$.ajax({url: "getFollowInfo.php?type=followings&start=" + startTime, success: function(result){
+        $(".timelineend").remove();
+        $(".c_showFollowings").append(result);
+		
+		if(String(result).length>5)
+			$(".c_showFollowings").append("<div class=\"timelineelement timelineend\"><div class=\"end\">Klicken um weitere Nutzer zu laden.</div></div>");
+		else
+			$(".c_showFollowings").append("<div class=\"timelineelement timelineend\"><div class=\"end\" id=\"NothingMore\">Du hast das Ende der Timeline erreicht.</div></div>");
 	}});
 }
 

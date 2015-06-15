@@ -313,4 +313,16 @@ function GetHighestPostID() {
 	
 	return $return->postID;
 }
+
+function GetHighestFollowID() {
+	include 'connect.php';
+	
+	$sql = "SELECT MAX(`followID`) AS `followID` FROM `follow`";
+	
+	$return = mysqli_fetch_object(mysqli_query($conn, $sql));
+	
+	mysqli_close($conn);
+	
+	return $return->followID;
+}
 ?>
